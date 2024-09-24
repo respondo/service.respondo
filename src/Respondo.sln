@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Api", "Respondo.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core", "Respondo.Core\Respondo.Core.csproj", "{B7ADABC9-C51C-4260-8A65-2423DE03E420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Entities", "Respondo.Entities\Respondo.Entities.csproj", "{70CE92B3-F80C-48FD-BEF4-89081A312CC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Entities", "Respondo.Core.Entities\Respondo.Core.Entities.csproj", "{70CE92B3-F80C-48FD-BEF4-89081A312CC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Persistence", "Respondo.Persistence\Respondo.Persistence.csproj", "{C5DE4B0D-06C4-4007-B528-E3609A6B1F09}"
 EndProject
