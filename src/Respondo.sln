@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resondo.Core", "Resondo.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resondo.Entities", "Resondo.Entities\Resondo.Entities.csproj", "{70CE92B3-F80C-48FD-BEF4-89081A312CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Persistence", "Respondo.Persistence\Respondo.Persistence.csproj", "{C5DE4B0D-06C4-4007-B528-E3609A6B1F09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Persistence.Migrations", "Respondo.Persistence.Migrations\Respondo.Persistence.Migrations.csproj", "{6E7F1337-06CA-40DA-A7D4-8CBCA5C05093}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,8 @@ Global
 		{84F7902E-5E3A-4BF1-BD52-DD2E5296E167} = {7444CCDB-1017-47FB-A39B-1E15648EE1AE}
 		{B7ADABC9-C51C-4260-8A65-2423DE03E420} = {787D1CAE-E674-470E-ADAD-30B9C0E8C065}
 		{70CE92B3-F80C-48FD-BEF4-89081A312CC2} = {787D1CAE-E674-470E-ADAD-30B9C0E8C065}
+		{C5DE4B0D-06C4-4007-B528-E3609A6B1F09} = {15A971C3-F2BF-42A3-8B0C-F61DA317FDD1}
+		{6E7F1337-06CA-40DA-A7D4-8CBCA5C05093} = {15A971C3-F2BF-42A3-8B0C-F61DA317FDD1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{84F7902E-5E3A-4BF1-BD52-DD2E5296E167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -39,5 +45,13 @@ Global
 		{70CE92B3-F80C-48FD-BEF4-89081A312CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70CE92B3-F80C-48FD-BEF4-89081A312CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70CE92B3-F80C-48FD-BEF4-89081A312CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DE4B0D-06C4-4007-B528-E3609A6B1F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DE4B0D-06C4-4007-B528-E3609A6B1F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DE4B0D-06C4-4007-B528-E3609A6B1F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DE4B0D-06C4-4007-B528-E3609A6B1F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E7F1337-06CA-40DA-A7D4-8CBCA5C05093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7F1337-06CA-40DA-A7D4-8CBCA5C05093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7F1337-06CA-40DA-A7D4-8CBCA5C05093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7F1337-06CA-40DA-A7D4-8CBCA5C05093}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
