@@ -1,6 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-items", ".solution-items", "{91A40D5A-B418-4E7E-A5D7-ABD7D803E715}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+		global.json = global.json
+		..\LICENSE = ..\LICENSE
+		..\.gitignore = ..\.gitignore
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{7444CCDB-1017-47FB-A39B-1E15648EE1AE}"
 EndProject
