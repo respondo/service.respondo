@@ -11,6 +11,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Compile Update="Identity\CreateUser.Events.cs">
+            <DependentUpon>CreateUser.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Identity\CreateUser.Handler.cs">
+            <DependentUpon>CreateUser.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="WolverineFx" Version="2.17.2"/>
     </ItemGroup>
 
