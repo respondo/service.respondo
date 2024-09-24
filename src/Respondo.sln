@@ -6,6 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-items", ".solutio
 		global.json = global.json
 		..\LICENSE = ..\LICENSE
 		..\.gitignore = ..\.gitignore
+		Dockerfile = Dockerfile
+		.dockerignore = .dockerignore
+		..\.github\workflows\service.yml = ..\.github\workflows\service.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{7444CCDB-1017-47FB-A39B-1E15648EE1AE}"
