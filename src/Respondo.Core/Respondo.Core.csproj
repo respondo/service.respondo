@@ -6,6 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\Respondo.Persistence\Respondo.Persistence.csproj"/>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="WolverineFx" Version="2.17.2"/>
