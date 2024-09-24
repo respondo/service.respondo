@@ -18,6 +18,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
+        with:
+          dotnet-quality: 'preview'
       - name: Restore
         working-directory: ./src  
         run: dotnet restore
@@ -34,6 +36,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
+        with:
+          dotnet-quality: 'preview'
       - name: Test
         working-directory: ./src
         run: dotnet test --verbosity normal
