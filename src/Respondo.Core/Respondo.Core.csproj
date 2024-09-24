@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+
+    <ItemGroup>
+        <PackageReference Include="WolverineFx" Version="2.17.2"/>
+    </ItemGroup>
+
 </Project>
