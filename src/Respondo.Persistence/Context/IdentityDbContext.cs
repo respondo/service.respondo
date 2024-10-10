@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Respondo.Core.Entities.Identity;
+using Respondo.Core.Identity.Contracts.Entities;
 
 public class IdentityDbContext(DbContextOptions<IdentityDbContext> options)
     : IdentityDbContext<ApplicationUser>(options), IDataProtectionKeyContext
