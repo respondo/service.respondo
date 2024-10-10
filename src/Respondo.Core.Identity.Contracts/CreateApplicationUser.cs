@@ -1,6 +1,6 @@
-namespace Respondo.Core.Identity;
+namespace Respondo.Core.Identity.Contracts;
 
-public sealed record CreateUser
+public sealed record CreateApplicationUser
 {
     public required string Username { get; init; }
     public required string Email { get; init; }
