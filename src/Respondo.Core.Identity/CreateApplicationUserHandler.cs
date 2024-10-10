@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
-using Respondo.Core.Entities.Identity;
+using Respondo.Core.Identity.Contracts;
+using Respondo.Core.Identity.Contracts.Entities;
 
 namespace Respondo.Core.Identity;
 
-public sealed record CreateUserHandler
+public sealed record CreateApplicationUserHandler
 {
-    public async Task<(IdentityResult, ApplicationUserCreated)> Handle(CreateUser command, UserManager<ApplicationUser> userManager)
+    public async Task<ApplicationUserCreated?> Handle(CreateApplicationUser command, UserManager<ApplicationUser> userManager)
     {
         var userId = Guid.NewGuid();
         var user = new ApplicationUser
@@ -17,8 +18,6 @@ public sealed record CreateUserHandler
 
         var result = await userManager.CreateAsync(user, command.Password);
 
-        var @event = new ApplicationUserCreated(userId);
-
-        return (result, @event);
+        return result.Succeeded ? new ApplicationUserCreated(userId) : default;
     }
 }
