@@ -4,8 +4,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Respondo.Api;
-using Respondo.Api.ViewModels;
-using Respondo.Core.Identity.Contracts;
+using Respondo.Api.Models;
 using Respondo.Core.Identity.Contracts.Entities;
 using Respondo.Testing.Integration.Helpers;
 
@@ -17,7 +16,7 @@ public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<T
     public async Task Should_Register_A_New_User()
     {
         var client = factory.CreateClientWithoutRedirect();
-        var response = await client.PostAsJsonAsync("/api/Authentication/register", new CreateApplicationUser
+        var response = await client.PostAsJsonAsync("/api/Authentication/register", new RegisterModel
         {
             Username = "shouldRegister",
             Email = "shouldRegister@email.com",
@@ -48,7 +47,7 @@ public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<T
         
         var client = factory.CreateClientWithoutRedirect();
         
-        var response = await client.PostAsJsonAsync("/api/Authentication/login", new LoginViewModel
+        var response = await client.PostAsJsonAsync("/api/Authentication/login", new LoginModel
         {
             Email = "shouldLogin@email.com",
             Password = "shouldLogin1234!"

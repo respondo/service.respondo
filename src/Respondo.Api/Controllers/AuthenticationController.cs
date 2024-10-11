@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Respondo.Api.ViewModels;
+using Respondo.Api.Models;
 using Respondo.Core.Identity.Contracts;
 using Respondo.Core.Identity.Contracts.Entities;
 using Wolverine;
@@ -24,9 +24,9 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] CreateApplicationUser command, CancellationToken cancellationToken)
+    public async Task<IActionResult> Register([FromBody] RegisterModel model, CancellationToken cancellationToken)
     {
-        var result = await _bus.InvokeAsync<IdentityResult>(command, cancellationToken);
+        var result = await _bus.InvokeAsync<IdentityResult>(model.ToRequest(), cancellationToken);
 
         if (result.Errors.Any())
         {
@@ -38,7 +38,7 @@ public class AuthenticationController : ControllerBase
             return BadRequest(new ValidationProblemDetails(ModelState));
         }
         
-        var user = await _userManager.FindByEmailAsync(command.Email);
+        var user = await _userManager.FindByEmailAsync(model.Email);
 
         if (user is null)
         {
@@ -51,7 +51,7 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginViewModel model, CancellationToken cancellationToken)
+    public async Task<IActionResult> Login([FromBody] LoginModel model, CancellationToken cancellationToken)
     {
         var user = await _userManager.FindByEmailAsync(model.Email);
 
