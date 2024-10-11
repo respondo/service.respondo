@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-rc.1"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime" Version="9.0.0-rc.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Respondo.Core.Events.Contracts\Respondo.Core.Events.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>
