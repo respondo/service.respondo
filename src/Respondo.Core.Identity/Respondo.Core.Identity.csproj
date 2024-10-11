@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="WolverineFx" Version="3.0.0-rc-2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Respondo.Core.Identity.Contracts\Respondo.Core.Identity.Contracts.csproj"/>
+        <ProjectReference Include="..\Respondo.Persistence\Respondo.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>Respondo.Testing.Unit</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+</Project>

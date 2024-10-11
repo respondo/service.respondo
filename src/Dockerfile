@@ -4,17 +4,18 @@ WORKDIR /src
 COPY *.sln ./
 
 COPY Respondo.Api/*.csproj Respondo.Api/
-COPY Respondo.Core/*.csproj Respondo.Core/
-COPY Respondo.Core.Entities/*.csproj Respondo.Core.Entities/
+COPY Respondo.Core.Identity/*.csproj Respondo.Core.Identity/
+COPY Respondo.Core.Identity.Contracts/*.csproj Respondo.Core.Identity.Contracts/
 COPY Respondo.Persistence/*.csproj Respondo.Persistence/
 COPY Respondo.Persistence.Migrations/*.csproj Respondo.Persistence.Migrations/
-# COPY Respondo.Testing/*.csproj Respondo.Testing/
+COPY Respondo.Testing.Integration/*.csproj Respondo.Testing.Integration/
+COPY Respondo.Testing.Unit/*.csproj Respondo.Testing.Unit/
 
 RUN dotnet restore -r linux-musl-x64
 
 COPY . .
 WORKDIR /src/Respondo
-RUN dotnet publish -c Release -o /app -r linux-musl-x64 --self-contained false --no-restore ../Respondo.sln 
+RUN dotnet publish -c Release -o /app -r linux-musl-x64 --self-contained false --no-restore ../Respondo.Api/Respondo.Api.csproj
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0-alpine
 WORKDIR /app

@@ -21,7 +21,7 @@ jobs:
         with:
           dotnet-version: '9.0.100-rc.1.24452.12'
       - name: Restore
-        working-directory: ./src  
+        working-directory: ./src
         run: dotnet restore
       - name: Build
         working-directory: ./src
@@ -30,7 +30,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      ASPNETCORE_ENVIRONMENT: 'Workflow'
+      ASPNETCORE_ENVIRONMENT: 'Testing'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
