@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Update="CreateEvent.Response.cs">
+        <DependentUpon>CreateEvent.cs</DependentUpon>
+      </Compile>
+      <Compile Update="CreateEvent.Events.cs">
+        <DependentUpon>CreateEvent.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

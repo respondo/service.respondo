@@ -10,5 +10,12 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="9.0.0-rc.1.24452.1" />
     </ItemGroup>
+
+
+    <ItemGroup>
+      <Compile Update="CreateApplicationUser.Events.cs">
+        <DependentUpon>CreateApplicationUser.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
     
 </Project>
