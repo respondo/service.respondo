@@ -1,11 +1,9 @@
-using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
 using NSubstitute;
 using Respondo.Core.Identity;
 using Respondo.Core.Identity.Contracts;
 using Respondo.Core.Identity.Contracts.Entities;
-using Xunit;
 
 namespace Respondo.Testing.Unit.Identity;
 

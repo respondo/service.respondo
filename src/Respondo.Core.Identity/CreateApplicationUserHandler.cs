@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Respondo.Core.Identity.Contracts;
 using Respondo.Core.Identity.Contracts.Entities;
