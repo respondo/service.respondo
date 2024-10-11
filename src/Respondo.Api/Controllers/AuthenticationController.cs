@@ -1,5 +1,13 @@
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Respondo.Api.ViewModels;
+using Respondo.Core.Identity.Contracts;
+using Respondo.Core.Identity.Contracts.Entities;
+using Wolverine;
 
 namespace Respondo.Api.Controllers;
 
@@ -7,15 +15,72 @@ namespace Respondo.Api.Controllers;
 [Route("api/[controller]")]
 public class AuthenticationController : ControllerBase
 {
-    [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterViewModel model, CancellationToken cancellationToken)
+    private readonly IMessageBus _bus;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public AuthenticationController(IMessageBus bus, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
-        throw new NotImplementedException();
+        _bus = bus;
+        _userManager = userManager;
+        _signInManager = signInManager;
+    }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] CreateApplicationUser command, CancellationToken cancellationToken)
+    {
+        var result = await _bus.InvokeAsync<IdentityResult>(command, cancellationToken);
+
+        if (result.Errors.Any())
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+            
+            return BadRequest(new ValidationProblemDetails(ModelState));
+        }
+        
+        var user = await _userManager.FindByEmailAsync(command.Email);
+
+        if (user is null)
+        {
+            return Problem("Unable to create user. Please contact support.");
+        }
+        
+        await _signInManager.SignInAsync(user, true);
+
+        return Redirect("/");
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginViewModel model, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var user = await _userManager.FindByEmailAsync(model.Email);
+
+        if (user is null)
+        {
+            ModelState.AddModelError("LoginError", "Invalid login attempt. Check email or password.");
+            return BadRequest(ModelState);
+        }
+
+        var result = await _userManager.CheckPasswordAsync(user, model.Password);
+
+        if (!result)
+        {
+            ModelState.AddModelError("LoginError", "Invalid login attempt. Check email or password.");
+            return BadRequest(ModelState);
+        }
+        
+        await _signInManager.SignInAsync(user, true);
+
+        return Redirect("/");
+    }
+
+    [Authorize]
+    [HttpGet("authenticate")]
+    public IActionResult Authenticate()
+    {
+        return Ok();
     }
 }
