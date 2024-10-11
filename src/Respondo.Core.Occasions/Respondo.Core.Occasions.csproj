@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Respondo.Core.Events.Contracts\Respondo.Core.Events.Contracts.csproj" />
+      <ProjectReference Include="..\Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

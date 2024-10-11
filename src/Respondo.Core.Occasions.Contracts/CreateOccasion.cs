@@ -1,6 +1,6 @@
-namespace Respondo.Core.Events.Contracts;
+namespace Respondo.Core.Occasions.Contracts;
 
-public sealed record CreateEvent
+public sealed record CreateOccasion
 {
     public required string Name { get; init; }
     public required Guid ProfileId { get; init; }

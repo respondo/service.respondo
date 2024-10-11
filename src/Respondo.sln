@@ -33,9 +33,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Testing.Integratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Testing.Unit", "Respondo.Testing.Unit\Respondo.Testing.Unit.csproj", "{B6EDB876-21F4-4A9A-9411-5305D12A5469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Events", "Respondo.Core.Events\Respondo.Core.Events.csproj", "{9183C26D-5129-4A99-88E3-CBFECFE7C5FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Occasions", "Respondo.Core.Occasions\Respondo.Core.Occasions.csproj", "{9183C26D-5129-4A99-88E3-CBFECFE7C5FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Events.Contracts", "Respondo.Core.Events.Contracts\Respondo.Core.Events.Contracts.csproj", "{CC382774-F3BA-4A6B-A387-313E53816502}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Occasions.Contracts", "Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj", "{CC382774-F3BA-4A6B-A387-313E53816502}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

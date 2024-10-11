@@ -1,10 +1,10 @@
 using NodaTime;
 
-namespace Respondo.Core.Events.Contracts.Entities;
+namespace Respondo.Core.Occasions.Contracts.Entities;
 
-public class Event
+public class Occasion
 {
-    public Event()
+    public Occasion()
     {
         CreatedAt = SystemClock.Instance.GetCurrentInstant();
         LastUpdatedAt = SystemClock.Instance.GetCurrentInstant();
