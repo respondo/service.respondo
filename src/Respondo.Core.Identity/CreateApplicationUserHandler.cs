@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Respondo.Core.Identity.Contracts;
 using Respondo.Core.Identity.Contracts.Entities;
@@ -6,18 +8,23 @@ namespace Respondo.Core.Identity;
 
 public sealed record CreateApplicationUserHandler
 {
-    public async Task<ApplicationUserCreated?> Handle(CreateApplicationUser command, UserManager<ApplicationUser> userManager)
+    public async Task<(IdentityResult?, ApplicationUserCreated?)> Handle(CreateApplicationUser request, UserManager<ApplicationUser> userManager)
     {
-        var userId = Guid.NewGuid();
+        var userId = Guid.CreateVersion7(TimeProvider.System.GetUtcNow());
+        
         var user = new ApplicationUser
         {
             Id = userId.ToString(),
-            UserName = command.Username,
-            Email = command.Email
+            UserName = request.Username,
+            Email = request.Email
         };
 
-        var result = await userManager.CreateAsync(user, command.Password);
+        var result = await userManager.CreateAsync(user, request.Password);
 
-        return result.Succeeded ? new ApplicationUserCreated(userId) : default;
+        return result.Succeeded switch
+        {
+            true => (result, new ApplicationUserCreated(userId)),
+            _ => (result, default)
+        };
     }
 }
