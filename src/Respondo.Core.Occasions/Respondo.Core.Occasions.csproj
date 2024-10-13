@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Respondo.Core.Identity.Contracts\Respondo.Core.Identity.Contracts.csproj" />
       <ProjectReference Include="..\Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj" />
     </ItemGroup>
 

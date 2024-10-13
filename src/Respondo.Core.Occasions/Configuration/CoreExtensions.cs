@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Occasions.Consumers;
 using Respondo.Core.Occasions.Persistence;
 using Wolverine;
 
@@ -47,7 +48,13 @@ public static class CoreExtensions
     /// <param name="configuration"><see cref="IConfiguration"/>.</param>
     public static void IncludeOccasionsModule(this WolverineOptions options, IConfiguration configuration)
     {
+        // Module Handlers
+        
         options.Discovery.IncludeType<CreateOccasionHandler>();
         options.Discovery.IncludeType<GetOccasionHandler>();
+        
+        // Cross-Module Consumers
+
+        options.Discovery.IncludeType<CreateApplicationUserConsumer>();
     }
 }
