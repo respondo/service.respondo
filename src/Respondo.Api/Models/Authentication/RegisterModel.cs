@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Respondo.Core.Identity.Contracts;
 
-namespace Respondo.Api.Models;
+namespace Respondo.Api.Models.Authentication;
 
 /// <summary>
 ///     Model for registering a new user.

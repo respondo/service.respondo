@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Respondo.Api;
 using Respondo.Api.Models;
+using Respondo.Api.Models.Authentication;
 using Respondo.Core.Identity.Contracts.Entities;
 using Respondo.Testing.Integration.Helpers;
 
