@@ -48,5 +48,6 @@ public static class CoreExtensions
     public static void IncludeOccasionsModule(this WolverineOptions options, IConfiguration configuration)
     {
         options.Discovery.IncludeType<CreateOccasionHandler>();
+        options.Discovery.IncludeType<GetOccasionHandler>();
     }
 }
