@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using Respondo.Core.Identity.Configuration;
 using Respondo.Core.Occasions.Configuration;
+using Respondo.Core.Parties.Configuration;
 using Wolverine;
 
 namespace Respondo.Api;
@@ -20,6 +21,7 @@ public class Program
 
         builder.ConfigureIdentityModule();
         builder.ConfigureOccasionsModule();
+        builder.ConfigurePartiesModule();
         
         builder.UseWolverine(options =>
         {
@@ -27,6 +29,7 @@ public class Program
 
             options.IncludeIdentityCore(builder.Configuration);
             options.IncludeOccasionsModule(builder.Configuration);
+            options.IncludePartiesModule(builder.Configuration);
         });
         
         var app = builder.Build();
@@ -37,6 +40,7 @@ public class Program
         {
             app.RunIdentityDbMigrations();
             app.RunOccasionsDbMigrations();
+            app.RunPartiesDbMigrations();
         }
         
         app.Run();
