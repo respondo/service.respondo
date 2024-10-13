@@ -1,6 +1,4 @@
-using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
-using Respawn;
 using Testcontainers.PostgreSql;
 
 namespace Respondo.Testing.Unit.Helpers;
