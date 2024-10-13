@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Respondo.Api.Extensions;
 using Respondo.Api.Models.Occasion;
+using Respondo.Core.Occasions.Contracts;
 using Wolverine;
 
 namespace Respondo.Api.Controllers;
@@ -27,7 +29,16 @@ public class OccasionController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateOccasion([FromBody] CreateOccasionModel model, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var request = model.ToRequest(User.GetProfileId());
+
+        var result = await _bus.InvokeAsync<CreateOccasionResponse>(request, cancellationToken);
+
+        if (result.Id != default)
+        {
+            return Ok(new { result.Id });
+        }
+        
+        return Problem("Unable to create occasion. Please contact support.");
     }
 
 }
