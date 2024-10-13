@@ -2,7 +2,7 @@ using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Respondo.Core.Occasions;
 using Respondo.Core.Occasions.Contracts;
-using Respondo.Core.Occasions.Contracts.Entities;
+using Respondo.Core.Occasions.Entities;
 using Respondo.Core.Occasions.Persistence;
 using Respondo.Testing.Unit.Helpers;
 

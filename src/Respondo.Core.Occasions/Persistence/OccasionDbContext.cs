@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Respondo.Core.Occasions.Contracts.Entities;
+using Respondo.Core.Occasions.Entities;
 
 namespace Respondo.Core.Occasions.Persistence;
 

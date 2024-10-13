@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Respondo.Core.Occasions.Contracts.Entities;
+using Respondo.Core.Occasions.Entities;
 
 namespace Respondo.Core.Occasions.Persistence.Configuration;
 

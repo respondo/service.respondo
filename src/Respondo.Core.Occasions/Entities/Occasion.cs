@@ -1,6 +1,6 @@
 using NodaTime;
 
-namespace Respondo.Core.Occasions.Contracts.Entities;
+namespace Respondo.Core.Occasions.Entities;
 
 public class Occasion
 {
