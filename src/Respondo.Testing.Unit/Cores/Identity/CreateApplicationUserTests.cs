@@ -5,7 +5,7 @@ using Respondo.Core.Identity;
 using Respondo.Core.Identity.Contracts;
 using Respondo.Core.Identity.Contracts.Entities;
 
-namespace Respondo.Testing.Unit.Identity;
+namespace Respondo.Testing.Unit.Cores.Identity;
 
 public class CreateApplicationUserTests
 {

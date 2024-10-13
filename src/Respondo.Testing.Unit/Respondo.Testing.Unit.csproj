@@ -24,8 +24,13 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Respondo.Core.Identity\Respondo.Core.Identity.csproj"/>
+        <ProjectReference Include="..\Respondo.Core.Occasions\Respondo.Core.Occasions.csproj" />
         <ProjectReference Include="..\Respondo.Persistence.Migrations\Respondo.Persistence.Migrations.csproj"/>
         <ProjectReference Include="..\Respondo.Persistence\Respondo.Persistence.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Cores\" />
     </ItemGroup>
 
 </Project>

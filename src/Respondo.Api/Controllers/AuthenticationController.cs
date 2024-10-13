@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Respondo.Api.Models;
-using Respondo.Core.Identity.Contracts;
+using Respondo.Api.Models.Authentication;
 using Respondo.Core.Identity.Contracts.Entities;
 using Wolverine;
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Occasions.Persistence;
 using Respondo.Persistence.Context;
 using Testcontainers.PostgreSql;
 
@@ -13,12 +14,10 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
     where TProgram : class
 {
     private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
+        .WithDatabase("respondo")
         .WithUsername("postgres")
         .WithPassword("postgres")
         .WithCleanUp(true)
-        .WithPortBinding(45432, 5432)
-        .WithReuse(true)
-        .WithLabel("reuse-id", "respondo.testing.integration")
         .Build();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -47,6 +46,17 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             });
             
             services.EnsureDbCreated<IdentityDbContext>();
+            
+            services.RemoveDbContext<OccasionDbContext>();
+            services.AddDbContext<OccasionDbContext>(options =>
+            {
+                options.UseNpgsql(GenerateConnectionString("occasions"), optionsBuilder =>
+                {
+                    optionsBuilder.UseNodaTime();
+                });
+            });
+            
+            services.EnsureDbCreated<OccasionDbContext>();
         });
     }
 
@@ -70,8 +80,8 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
         await _container.DisposeAsync();
     }
 
-    private static string GenerateConnectionString(string database)
+    private string GenerateConnectionString(string database)
     {
-        return $"Host=127.0.0.1;Port=45432;Database=respondo.{database};Username=postgres;Password=postgres";
+        return _container.GetConnectionString().Replace("respondo", $"respondo.{database}");
     }
 }

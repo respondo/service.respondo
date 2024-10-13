@@ -4,8 +4,11 @@ WORKDIR /src
 COPY *.sln ./
 
 COPY Respondo.Api/*.csproj Respondo.Api/
+COPY Respondo.Application/*.csproj Respondo.Application/
 COPY Respondo.Core.Identity/*.csproj Respondo.Core.Identity/
 COPY Respondo.Core.Identity.Contracts/*.csproj Respondo.Core.Identity.Contracts/
+COPY Respondo.Core.Occasions/*.csproj Respondo.Core.Occasions/
+COPY Respondo.Core.Occasions.Contracts/*.csproj Respondo.Core.Occasions.Contracts/
 COPY Respondo.Persistence/*.csproj Respondo.Persistence/
 COPY Respondo.Persistence.Migrations/*.csproj Respondo.Persistence.Migrations/
 COPY Respondo.Testing.Integration/*.csproj Respondo.Testing.Integration/

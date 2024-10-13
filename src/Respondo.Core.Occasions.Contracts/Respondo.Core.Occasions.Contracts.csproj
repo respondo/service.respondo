@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NodaTime" Version="3.1.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="CreateOccasion.Response.cs">
+        <DependentUpon>CreateOccasion.cs</DependentUpon>
+      </Compile>
+      <Compile Update="CreateOccasion.Events.cs">
+        <DependentUpon>CreateOccasion.cs</DependentUpon>
+      </Compile>
+      <Compile Update="GetOccasion.Response.cs">
+        <DependentUpon>GetOccasion.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

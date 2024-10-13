@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Respondo.Api.Models;
+namespace Respondo.Api.Models.Authentication;
 
 /// <summary>
 ///     Model for login an existing user.
