@@ -19,9 +19,9 @@ public class OccasionTests(TestFactory<Program> factory) : IClassFixture<TestFac
         var client = factory.CreateClientWithoutRedirect();
         await client.PostAsJsonAsync("/api/Authentication/register", new RegisterModel
         {
-            Username = "shouldRegister",
-            Email = "shouldRegister@email.com",
-            Password = "shouldRegister1234!"
+            Username = "Should_Get_Occasion",
+            Email = "Should_Get_Occasion@email.com",
+            Password = "password1234!"
         });
         
         var creationResponse = await client.PostAsJsonAsync("/api/Occasion", new CreateOccasionModel
@@ -52,9 +52,9 @@ public class OccasionTests(TestFactory<Program> factory) : IClassFixture<TestFac
         var client = factory.CreateClientWithoutRedirect();
         await client.PostAsJsonAsync("/api/Authentication/register", new RegisterModel
         {
-            Username = "shouldRegister",
-            Email = "shouldRegister@email.com",
-            Password = "shouldRegister1234!"
+            Username = "Should_Create_Occasion",
+            Email = "Should_Create_Occasion@email.com",
+            Password = "password1234!"
         });
 
         #endregion
