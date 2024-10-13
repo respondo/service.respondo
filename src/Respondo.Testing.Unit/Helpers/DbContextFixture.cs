@@ -7,9 +7,12 @@ namespace Respondo.Testing.Unit.Helpers;
 
 public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
 {
-    private readonly PostgreSqlContainer _container = new PostgreSqlBuilder().Build();
-    private DbConnection _dbConnection = null!;
-    private Respawner _respawner = null!;
+    private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
+        .WithUsername("postgres")
+        .WithPassword("postgres")
+        .WithCleanUp(true)
+        .WithPortBinding(45433, 5432)
+        .Build();
 
     public T DbContext { get; private set; } = null!;
 
@@ -19,33 +22,21 @@ public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
         var connectionString = _container.GetConnectionString();
 
         var options = new DbContextOptionsBuilder<T>()
-            .UseNpgsql(connectionString, builder => { builder.MigrationsAssembly("Respondo.Persistence.Migrations"); })
+            .UseNpgsql(connectionString, builder =>
+            {
+                builder.MigrationsAssembly(typeof(T).Assembly.GetName().Name);
+                builder.UseNodaTime();
+            })
             .Options;
 
+        
         DbContext = (T)Activator.CreateInstance(typeof(T), options)!;
 
-        await DbContext.Database.MigrateAsync();
-
-        _dbConnection = DbContext.Database.GetDbConnection();
-        await _dbConnection.OpenAsync();
-
-        _respawner = await Respawner.CreateAsync(_dbConnection,
-            new RespawnerOptions
-            {
-                SchemasToInclude = new[] { "public" },
-                DbAdapter = DbAdapter.Postgres
-            }
-        );
-    }
-    
-    public Task ResetDatabase()
-    {
-        return _respawner.ResetAsync(_dbConnection);
+        await DbContext.Database.EnsureCreatedAsync();
     }
     
     public async Task DisposeAsync()
     {
-        await _dbConnection.CloseAsync();
         await _container.DisposeAsync();
     }
 }
