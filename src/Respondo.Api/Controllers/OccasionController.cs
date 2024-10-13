@@ -22,7 +22,20 @@ public class OccasionController : ControllerBase
     [HttpGet("{occasionId:guid}")]
     public async Task<IActionResult> GetOccasion([FromRoute] Guid occasionId, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var request = new GetOccasion
+        {
+            Id = occasionId,
+            ProfileId = User.GetProfileId()
+        };
+
+        var result = await _bus.InvokeAsync<GetOccasionResponse?>(request, cancellationToken);
+
+        if (result is null)
+        {
+            return NotFound(new { request.Id });
+        }
+
+        return Ok(result);
     }
 
     [Authorize]
@@ -35,10 +48,9 @@ public class OccasionController : ControllerBase
 
         if (result.Id != default)
         {
-            return Ok(new { result.Id });
+            return Ok(result);
         }
-        
+
         return Problem("Unable to create occasion. Please contact support.");
     }
-
 }
