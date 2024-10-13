@@ -8,10 +8,7 @@ namespace Respondo.Testing.Unit.Helpers;
 public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
 {
     private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
-        .WithUsername("postgres")
-        .WithPassword("postgres")
         .WithCleanUp(true)
-        .WithPortBinding(45433, 5432)
         .Build();
 
     public T DbContext { get; private set; } = null!;
