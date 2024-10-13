@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Occasions", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Core.Occasions.Contracts", "Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj", "{CC382774-F3BA-4A6B-A387-313E53816502}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{4FB9268F-D615-42F9-AA88-9FF572E9CB6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respondo.Application", "Respondo.Application\Respondo.Application.csproj", "{E67E983A-BE40-47EC-B2F5-3B3926F3F426}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +56,7 @@ Global
 		{B6EDB876-21F4-4A9A-9411-5305D12A5469} = {DD5AE5D4-C899-4425-A720-DB7295C63F44}
 		{9183C26D-5129-4A99-88E3-CBFECFE7C5FB} = {787D1CAE-E674-470E-ADAD-30B9C0E8C065}
 		{CC382774-F3BA-4A6B-A387-313E53816502} = {787D1CAE-E674-470E-ADAD-30B9C0E8C065}
+		{E67E983A-BE40-47EC-B2F5-3B3926F3F426} = {4FB9268F-D615-42F9-AA88-9FF572E9CB6C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{84F7902E-5E3A-4BF1-BD52-DD2E5296E167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -90,5 +95,9 @@ Global
 		{CC382774-F3BA-4A6B-A387-313E53816502}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC382774-F3BA-4A6B-A387-313E53816502}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC382774-F3BA-4A6B-A387-313E53816502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67E983A-BE40-47EC-B2F5-3B3926F3F426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67E983A-BE40-47EC-B2F5-3B3926F3F426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67E983A-BE40-47EC-B2F5-3B3926F3F426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67E983A-BE40-47EC-B2F5-3B3926F3F426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
