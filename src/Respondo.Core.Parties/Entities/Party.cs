@@ -1,6 +1,6 @@
 namespace Respondo.Core.Parties.Entities;
 
-internal sealed class Party
+public sealed class Party
 {
     public Party()
     {

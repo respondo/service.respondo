@@ -1,6 +1,6 @@
 namespace Respondo.Core.Parties.Entities;
 
-internal sealed class Occasion
+public sealed class Occasion
 {
     public Occasion()
     {

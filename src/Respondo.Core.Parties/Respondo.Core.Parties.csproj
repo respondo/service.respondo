@@ -18,5 +18,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
     </ItemGroup>
-
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="Respondo.Testing.Unit" />
+        <InternalsVisibleTo Include="Respondo.Testing.Integration" />
+    </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
         .WithCleanUp(true)
         .Build();
 
-    public T DbContext { get; private set; } = null!;
+    internal T DbContext { get; private set; } = null!;
 
     public async Task InitializeAsync()
     {

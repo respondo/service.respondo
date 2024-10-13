@@ -1,6 +1,6 @@
 namespace Respondo.Core.Parties.Entities;
 
-internal sealed class Profile
+public sealed class Profile
 {
     public Profile()
     {
