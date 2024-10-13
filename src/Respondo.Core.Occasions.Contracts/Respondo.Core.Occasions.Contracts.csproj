@@ -12,10 +12,10 @@
 
     <ItemGroup>
       <Compile Update="CreateOccasion.Response.cs">
-        <DependentUpon>CreateEvent.cs</DependentUpon>
+        <DependentUpon>CreateOccasion.cs</DependentUpon>
       </Compile>
       <Compile Update="CreateOccasion.Events.cs">
-        <DependentUpon>CreateEvent.cs</DependentUpon>
+        <DependentUpon>CreateOccasion.cs</DependentUpon>
       </Compile>
     </ItemGroup>
 
