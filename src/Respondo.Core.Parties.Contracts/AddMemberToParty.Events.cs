@@ -1,6 +1,6 @@
 namespace Respondo.Core.Parties.Contracts;
 
-public sealed record MemberAdded
+public sealed record MemberAddedToParty
 {
     public required Guid Id { get; init; }
 }
