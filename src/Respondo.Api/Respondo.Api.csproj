@@ -21,5 +21,11 @@
         <ProjectReference Include="..\Respondo.Core.Parties\Respondo.Core.Parties.csproj" />
         <ProjectReference Include="..\Respondo.Persistence.Migrations\Respondo.Persistence.Migrations.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Update="Controllers\OccasionController.Parties.cs">
+        <DependentUpon>OccasionController.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
 
 </Project>
