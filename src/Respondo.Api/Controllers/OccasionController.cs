@@ -9,7 +9,7 @@ namespace Respondo.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class OccasionController : ControllerBase
+public partial class OccasionController : ControllerBase
 {
     private readonly IMessageBus _bus;
 
