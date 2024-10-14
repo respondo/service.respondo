@@ -8,7 +8,7 @@ namespace Respondo.Core.Parties;
 
 public sealed record CreatePartyHandler
 {
-    public async Task<(CreatePartyResponse, PartyCreated)> Handle(CreateParty request, PartiesDbContext context)
+    public async Task<(CreatePartyResponse?, PartyCreated?)> Handle(CreateParty request, PartiesDbContext context)
     {
         var occasion = await context.Occasions
             .Where(occasion => occasion.Profile.Id == request.ProfileId)
