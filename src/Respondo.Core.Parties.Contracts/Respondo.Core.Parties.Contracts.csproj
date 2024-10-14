@@ -16,6 +16,9 @@
       <Compile Update="AddMemberToParty.Events.cs">
         <DependentUpon>AddMemberToParty.cs</DependentUpon>
       </Compile>
+      <Compile Update="GetParty.Response.cs">
+        <DependentUpon>GetParty.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
