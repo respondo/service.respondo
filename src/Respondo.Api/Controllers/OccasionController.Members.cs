@@ -17,4 +17,20 @@ public partial class OccasionController
 
         return Accepted();
     }
+
+    [HttpDelete("{occasionId:guid}/party/{partyId:guid}/member/{memberId:guid}")]
+    public async Task<IActionResult> DeletePartyMember([FromRoute] Guid occasionId, [FromRoute] Guid partyId,
+        [FromRoute] Guid memberId)
+    {
+        var request = new DeletePartyMember()
+        {
+            PartyId = partyId,
+            Id = memberId,
+            ProfileId = User.GetProfileId(),
+        };
+
+        await _bus.PublishAsync(request);
+
+        return Accepted();
+    }
 }
