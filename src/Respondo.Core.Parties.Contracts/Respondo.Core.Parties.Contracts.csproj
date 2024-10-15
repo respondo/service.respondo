@@ -19,6 +19,9 @@
       <Compile Update="GetParty.Response.cs">
         <DependentUpon>GetParty.cs</DependentUpon>
       </Compile>
+      <Compile Update="DeleteParty.Events.cs">
+        <DependentUpon>DeleteParty.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
