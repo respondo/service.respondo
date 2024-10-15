@@ -29,6 +29,9 @@
       <Compile Update="Controllers\OccasionController.Parties.cs">
         <DependentUpon>OccasionController.cs</DependentUpon>
       </Compile>
+      <Compile Update="Controllers\OccasionController.Members.cs">
+        <DependentUpon>OccasionController.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
