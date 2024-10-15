@@ -2,12 +2,20 @@ using System.Text.Json.Serialization;
 using Respondo.Core.Identity.Configuration;
 using Respondo.Core.Occasions.Configuration;
 using Respondo.Core.Parties.Configuration;
+using Scalar.AspNetCore;
 using Wolverine;
 
 namespace Respondo.Api;
 
+/// <summary>
+///     Respondo.
+/// </summary>
 public class Program
 {
+    /// <summary>
+    ///     The main entry point for the application.
+    /// </summary>
+    /// <param name="args"></param>
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +25,8 @@ public class Program
         builder.Services.AddControllers()
             .AddJsonOptions(options => { options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; });
 
+        builder.Services.AddOpenApi();
+        
         builder.Services.AddSingleton(TimeProvider.System);
 
         builder.ConfigureIdentityModule();
@@ -36,6 +46,12 @@ public class Program
 
         app.MapControllers();
 
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapOpenApi();
+            app.MapScalarApiReference();
+        }
+        
         if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
         {
             app.RunIdentityDbMigrations();
