@@ -16,7 +16,7 @@ public partial class OccasionController
             Id = partyId,
             ProfileId = User.GetProfileId()
         };
-        
+
         var result = await _bus.InvokeAsync<GetPartyResponse?>(request, cancellationToken);
 
         if (result is null)
@@ -34,12 +34,27 @@ public partial class OccasionController
         var request = model.ToRequest(occasionId, User.GetProfileId());
 
         var result = await _bus.InvokeAsync<CreatePartyResponse?>(request, cancellationToken);
-        
+
         if (result is null)
         {
             return Problem("Unable to create party. Please contact support.");
         }
 
         return Ok(result);
+    }
+
+    [HttpDelete("{occasionId:guid}/party/{partyId:guid}")]
+    public async Task<IActionResult> DeleteParty([FromRoute] Guid occasionId, [FromRoute] Guid partyId,
+        CancellationToken cancellationToken)
+    {
+        var request = new DeleteParty
+        {
+            Id = partyId,
+            ProfileId = User.GetProfileId()
+        };
+
+        await _bus.InvokeAsync(request, cancellationToken);
+
+        return Accepted();
     }
 }
