@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Parties.Consumers;
 using Respondo.Core.Parties.Persistence;
 using Wolverine;
 
@@ -18,7 +19,7 @@ public static class CoreExtensions
     /// <param name="builder"><see cref="WebApplicationBuilder"/>.</param>
     public static void ConfigurePartiesModule(this WebApplicationBuilder builder)
     {
-        var identityDbConnectionString = builder.Configuration.GetConnectionString("OccasionsDb");
+        var identityDbConnectionString = builder.Configuration.GetConnectionString("PartiesDb");
 
         builder.Services.AddDbContext<PartiesDbContext>(options =>
         {
@@ -47,5 +48,13 @@ public static class CoreExtensions
     /// <param name="configuration"><see cref="IConfiguration"/>.</param>
     public static void IncludePartiesModule(this WolverineOptions options, IConfiguration configuration)
     {
+        // Module Handlers
+        options.Discovery.IncludeType<AddMemberToPartyHandler>();
+        options.Discovery.IncludeType<CreatePartyHandler>();
+        options.Discovery.IncludeType<GetPartyHandler>();
+        
+        // Cross-Module Consumers
+        options.Discovery.IncludeType<ApplicationUserCreatedConsumer>();
+        options.Discovery.IncludeType<OccasionCreatedConsumer>();
     }
 }
