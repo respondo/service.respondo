@@ -2,5 +2,5 @@ namespace Respondo.Core.Parties.Contracts;
 
 public sealed record PartyMemberDeleted
 {
-    public Guid Id { get; set; }
+    public required Guid Id { get; init; }
 }
