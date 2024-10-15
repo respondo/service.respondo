@@ -8,7 +8,7 @@ using Respondo.Testing.Unit.Helpers;
 
 namespace Respondo.Testing.Unit.Cores.Parties;
 
-public class AddMemberToPartyTests(DbContextFixture<PartiesDbContext> dbFixture) : IClassFixture<DbContextFixture<PartiesDbContext>>
+public class AddPartyMemberTests(DbContextFixture<PartiesDbContext> dbFixture) : IClassFixture<DbContextFixture<PartiesDbContext>>
 {
     [Fact]
     public async Task Should_Add_Member_To_Party()
@@ -44,14 +44,14 @@ public class AddMemberToPartyTests(DbContextFixture<PartiesDbContext> dbFixture)
 
         #endregion
 
-        var request = new AddMemberToParty
+        var request = new AddPartyMember
         {
             PartyId = party.Id,
             ProfileId = profile.Id,
             Name = "Should_Add_Member_To_Party"
         };
 
-        var @event = await new AddMemberToPartyHandler().Handle(request, dbFixture.DbContext);
+        var @event = await new AddPartyMemberHandler().Handle(request, dbFixture.DbContext);
 
         @event!.Id.Should().NotBeEmpty();
 

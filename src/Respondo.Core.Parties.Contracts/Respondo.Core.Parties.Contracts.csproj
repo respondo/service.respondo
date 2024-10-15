@@ -13,8 +13,8 @@
       <Compile Update="CreateParty.Response.cs">
         <DependentUpon>CreateParty.cs</DependentUpon>
       </Compile>
-      <Compile Update="AddMemberToParty.Events.cs">
-        <DependentUpon>AddMemberToParty.cs</DependentUpon>
+      <Compile Update="AddPartyMember.Events.cs">
+        <DependentUpon>AddPartyMember.cs</DependentUpon>
       </Compile>
       <Compile Update="GetParty.Response.cs">
         <DependentUpon>GetParty.cs</DependentUpon>

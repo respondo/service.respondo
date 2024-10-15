@@ -49,7 +49,7 @@ public static class CoreExtensions
     public static void IncludePartiesModule(this WolverineOptions options, IConfiguration configuration)
     {
         // Module Handlers
-        options.Discovery.IncludeType<AddMemberToPartyHandler>();
+        options.Discovery.IncludeType<AddPartyMemberHandler>();
         options.Discovery.IncludeType<CreatePartyHandler>();
         options.Discovery.IncludeType<DeletePartyHandler>();
         options.Discovery.IncludeType<GetPartyHandler>();

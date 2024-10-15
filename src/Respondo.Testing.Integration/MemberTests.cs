@@ -48,7 +48,7 @@ public class MemberTests(TestFactory<Program> factory) : IClassFixture<TestFacto
 
         #endregion
 
-        var addMemberResponse = await client.PostAsJsonAsync($"api/Occasion/{occasionId}/party/{partyId}/member", new AddMemberToPartyModel
+        var addMemberResponse = await client.PostAsJsonAsync($"api/Occasion/{occasionId}/party/{partyId}/member", new AddPartyMemberRequest
         {
             Name = "New Member"
         });

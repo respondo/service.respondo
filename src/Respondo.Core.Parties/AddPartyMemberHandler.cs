@@ -5,9 +5,9 @@ using Respondo.Core.Parties.Persistence;
 
 namespace Respondo.Core.Parties;
 
-public sealed record AddMemberToPartyHandler
+public sealed record AddPartyMemberHandler
 {
-    public async Task<PartyMemberAdded?> Handle(AddMemberToParty request, PartiesDbContext context)
+    public async Task<PartyMemberAdded?> Handle(AddPartyMember request, PartiesDbContext context)
     {
         var party = await context.Parties
             .Where(party => party.Occasion.Profile.Id == request.ProfileId)
