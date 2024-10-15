@@ -50,7 +50,7 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginModel model, CancellationToken cancellationToken)
+    public async Task<IActionResult> Login([FromBody] LoginRequest model, CancellationToken cancellationToken)
     {
         var user = await _userManager.FindByEmailAsync(model.Email);
 

@@ -47,7 +47,7 @@ public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<T
         
         var client = factory.CreateClientWithoutRedirect();
         
-        var response = await client.PostAsJsonAsync("/api/Authentication/login", new LoginModel
+        var response = await client.PostAsJsonAsync("/api/Authentication/login", new LoginRequest
         {
             Email = "shouldLogin@email.com",
             Password = "shouldLogin1234!"
