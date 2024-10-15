@@ -7,7 +7,7 @@ namespace Respondo.Core.Parties;
 
 public sealed record AddMemberToPartyHandler
 {
-    public async Task<MemberAddedToParty?> Handle(AddMemberToParty request, PartiesDbContext context)
+    public async Task<PartyMemberAdded?> Handle(AddMemberToParty request, PartiesDbContext context)
     {
         var party = await context.Parties
             .Where(party => party.Occasion.Profile.Id == request.ProfileId)
@@ -29,7 +29,7 @@ public sealed record AddMemberToPartyHandler
         
         await context.SaveChangesAsync();
         
-        return new MemberAddedToParty
+        return new PartyMemberAdded
         {
             Id = member.Id
         };
