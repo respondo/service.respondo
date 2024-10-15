@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Respondo.Core.Occasions.Persistence;
+using Respondo.Core.Parties.Persistence;
 using Respondo.Persistence.Context;
 using Testcontainers.PostgreSql;
 
@@ -57,6 +58,17 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             });
             
             services.EnsureDbCreated<OccasionDbContext>();
+            
+            services.RemoveDbContext<PartiesDbContext>();
+            services.AddDbContext<PartiesDbContext>(options =>
+            {
+                options.UseNpgsql(GenerateConnectionString("parties"), optionsBuilder =>
+                {
+                    optionsBuilder.UseNodaTime();
+                });
+            });
+            
+            services.EnsureDbCreated<PartiesDbContext>();
         });
     }
 
