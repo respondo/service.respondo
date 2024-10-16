@@ -46,4 +46,4 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         working-directory: ./src
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal --property:WarningLevel=0
