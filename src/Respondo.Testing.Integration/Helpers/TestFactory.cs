@@ -8,6 +8,8 @@ using Respondo.Core.Occasions.Persistence;
 using Respondo.Core.Parties.Persistence;
 using Respondo.Persistence.Context;
 using Testcontainers.PostgreSql;
+using Wolverine.Configuration;
+using Wolverine.Runtime;
 
 namespace Respondo.Testing.Integration.Helpers;
 
@@ -15,6 +17,7 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
     where TProgram : class
 {
     private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
+        .WithLogger(default)
         .WithDatabase("respondo")
         .WithUsername("postgres")
         .WithPassword("postgres")

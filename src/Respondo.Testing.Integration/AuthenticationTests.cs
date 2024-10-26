@@ -23,6 +23,8 @@ public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<T
             Password = "shouldRegister1234!"
         });
 
+        await Task.Delay(2000);
+
         response.StatusCode.Should().Be(HttpStatusCode.Redirect);
         response.Headers.Should().ContainKey("Set-Cookie");
     }
