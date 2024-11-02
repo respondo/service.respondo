@@ -8,6 +8,21 @@ namespace Respondo.Api.Controllers;
 
 public partial class OccasionController
 {
+    [HttpGet("{occasionId:guid}/party")]
+    public async Task<IActionResult> GetParties([FromRoute] Guid occasionId, CancellationToken cancellationToken)
+    {
+        var request = new GetParties
+        {
+            OccasionId = occasionId,
+            ProfileId = User.GetProfileId()
+        };
+
+        var result = await _bus.InvokeAsync<GetPartiesResponse>(request, cancellationToken);
+
+        return Ok(result);
+    }
+    
+    
     [HttpGet("{occasionId:guid}/party/{partyId:guid}")]
     public async Task<IActionResult> GetParty([FromRoute] Guid occasionId, [FromRoute] Guid partyId, CancellationToken cancellationToken)
     {
