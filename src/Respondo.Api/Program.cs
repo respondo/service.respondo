@@ -43,13 +43,30 @@ public class Program
         });
         
         var app = builder.Build();
+        
+        app.UseCors(options =>
+        {
+            options.WithOrigins("https://08fbaaf0.respondo-dashboard.pages.dev")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+        });
 
-        app.MapControllers();
+        app.UseRouting();
+        
+        app.UseAuthentication();
+        app.UseAuthorization();
+        
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
 
         if (app.Environment.IsDevelopment())
-        {
+        {   
             app.MapOpenApi();
             app.MapScalarApiReference();
+            app.MapGet("/", () => Results.LocalRedirect("/scalar/v1", permanent: true));
         }
         
         if (app.Environment.IsDevelopment() || app.Environment.IsProduction())

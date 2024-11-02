@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +46,14 @@ public static class CoreExtensions
             }).AddEntityFrameworkStores<IdentityDbContext>()
             .AddDefaultTokenProviders();
 
+        builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.SlidingExpiration = true;
+            options.ExpireTimeSpan = TimeSpan.FromDays(30);
+            options.Cookie.SameSite = SameSiteMode.None;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        });
+        
         builder.Services.AddAuthorization();
     }
 

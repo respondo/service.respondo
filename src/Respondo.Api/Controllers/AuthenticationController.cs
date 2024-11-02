@@ -46,7 +46,7 @@ public class AuthenticationController : ControllerBase
         
         await _signInManager.SignInAsync(user, true);
 
-        return Redirect("/");
+        return Redirect("http://localhost:3000");
     }
 
     [HttpPost("login")]
@@ -70,7 +70,7 @@ public class AuthenticationController : ControllerBase
         
         await _signInManager.SignInAsync(user, true);
 
-        return Redirect("/");
+        return Ok();
     }
 
     [Authorize]
