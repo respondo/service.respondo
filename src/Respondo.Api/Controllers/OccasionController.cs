@@ -7,6 +7,7 @@ using Wolverine;
 
 namespace Respondo.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public partial class OccasionController : ControllerBase
@@ -18,7 +19,6 @@ public partial class OccasionController : ControllerBase
         _bus = bus;
     }
 
-    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetOccasions(CancellationToken cancellationToken)
     {
@@ -32,7 +32,6 @@ public partial class OccasionController : ControllerBase
         return Ok(result);
     }
     
-    [Authorize]
     [HttpGet("{occasionId:guid}")]
     public async Task<IActionResult> GetOccasion([FromRoute] Guid occasionId, CancellationToken cancellationToken)
     {
@@ -52,7 +51,6 @@ public partial class OccasionController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateOccasion([FromBody] CreateOccasionModel model, CancellationToken cancellationToken)
     {
