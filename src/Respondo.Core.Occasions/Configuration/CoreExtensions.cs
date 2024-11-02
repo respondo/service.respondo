@@ -51,6 +51,7 @@ public static class CoreExtensions
         // Module Handlers
         
         options.Discovery.IncludeType<CreateOccasionHandler>();
+        options.Discovery.IncludeType<GetOccasionsHandler>();
         options.Discovery.IncludeType<GetOccasionHandler>();
         
         // Cross-Module Consumers

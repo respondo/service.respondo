@@ -19,6 +19,20 @@ public partial class OccasionController : ControllerBase
     }
 
     [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> GetOccasions(CancellationToken cancellationToken)
+    {
+        var request = new GetOccasions
+        {
+            ProfileId = User.GetProfileId()
+        };
+
+        var result = await _bus.InvokeAsync<GetOccasionsResponse>(request, cancellationToken);
+
+        return Ok(result);
+    }
+    
+    [Authorize]
     [HttpGet("{occasionId:guid}")]
     public async Task<IActionResult> GetOccasion([FromRoute] Guid occasionId, CancellationToken cancellationToken)
     {
