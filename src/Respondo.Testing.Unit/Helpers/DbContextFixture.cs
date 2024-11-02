@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Testcontainers.PostgreSql;
 
 namespace Respondo.Testing.Unit.Helpers;

@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
+using FluentAssertions.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Respondo.Api;
@@ -11,6 +12,7 @@ using Respondo.Core.Occasions.Contracts;
 using Respondo.Core.Parties.Contracts;
 using Respondo.Core.Parties.Persistence;
 using Respondo.Testing.Integration.Helpers;
+using Wolverine.Runtime;
 
 namespace Respondo.Testing.Integration;
 
@@ -65,6 +67,9 @@ public class MemberTests(TestFactory<Program> factory) : IClassFixture<TestFacto
 
         party.Should().NotBeNull();
         party!.Members.Should().Contain(m => m.Name == "New Member");
+        
+        
+        var s = factory.Services.GetService<IWolverineRuntime>();
     }
     
     [Fact]
