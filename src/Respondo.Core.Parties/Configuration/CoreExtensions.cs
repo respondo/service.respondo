@@ -53,6 +53,7 @@ public static class CoreExtensions
         options.Discovery.IncludeType<CreatePartyHandler>();
         options.Discovery.IncludeType<DeletePartyHandler>();
         options.Discovery.IncludeType<DeletePartyMemberHandler>();
+        options.Discovery.IncludeType<GetPartiesHandler>();
         options.Discovery.IncludeType<GetPartyHandler>();
         
         // Cross-Module Consumers
