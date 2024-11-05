@@ -51,9 +51,9 @@ public static class CoreExtensions
             options.SlidingExpiration = true;
             options.ExpireTimeSpan = TimeSpan.FromDays(30);
             options.Cookie.SameSite = SameSiteMode.None;
-            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            options.Cookie.IsEssential = true;
         });
-        
         builder.Services.AddAuthorization();
     }
 

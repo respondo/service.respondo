@@ -57,10 +57,7 @@ public class Program
         app.UseAuthentication();
         app.UseAuthorization();
         
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
+        app.MapControllers();
 
         if (app.Environment.IsDevelopment())
         {   
