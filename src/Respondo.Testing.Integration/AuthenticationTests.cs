@@ -10,6 +10,7 @@ using Respondo.Testing.Integration.Helpers;
 
 namespace Respondo.Testing.Integration;
 
+[Collection("Integration Tests")]
 public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<TestFactory<Program>>
 {
     [Fact]
@@ -47,7 +48,7 @@ public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<T
 
         #endregion
         
-        var client = factory.CreateClientWithoutRedirect();
+        var client = factory.CreateClient();
         
         var response = await client.PostAsJsonAsync("/api/Authentication/login", new LoginRequest
         {
@@ -55,7 +56,7 @@ public class AuthenticationTests(TestFactory<Program> factory) : IClassFixture<T
             Password = "shouldLogin1234!"
         });
         
-        response.StatusCode.Should().Be(HttpStatusCode.Redirect);
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
         response.Headers.Should().ContainKey("Set-Cookie");
 
         response = await client.GetAsync("api/Authentication/authenticate");

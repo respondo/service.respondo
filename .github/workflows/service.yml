@@ -31,6 +31,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ASPNETCORE_ENVIRONMENT: 'Testing'
+    services:
+      postgres:
+        image: postgres:latest
+        environment:
+          POSTGRES_USER: testing
+          POSTGRES_PASSWORD: testing
+          POSTGRES_DB: testing
+        ports:
+          - 5433:5432
     steps:
       - name: Checkout
         uses: actions/checkout@v4

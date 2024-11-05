@@ -14,14 +14,6 @@ namespace Respondo.Testing.Integration.Helpers;
 public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime
     where TProgram : class
 {
-    private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
-        .WithLogger(default)
-        .WithDatabase("respondo")
-        .WithUsername("postgres")
-        .WithPassword("postgres")
-        .WithCleanUp(true)
-        .Build();
-
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
@@ -79,16 +71,20 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
 
     public async Task InitializeAsync()
     {
-        await _container.StartAsync();
+        // await _container.StartAsync();
     }
 
     public new async Task DisposeAsync()
     {
-        await _container.DisposeAsync();
+        // foreach (var VARIABLE in Services.GetServices<DbContext>())
+        // {
+        //     
+        // }
     }
 
     private string GenerateConnectionString(string database)
     {
-        return _container.GetConnectionString().Replace("respondo", $"respondo.{database}");
+        return $"Server=127.0.0.1;Port=5433;Database=respondo.{database};User Id=testing;Password=testing;";
+        // return _container.GetConnectionString().Replace("respondo", $"respondo.{database}");
     }
 }

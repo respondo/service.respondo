@@ -16,6 +16,7 @@ using Wolverine.Runtime;
 
 namespace Respondo.Testing.Integration;
 
+[Collection("Integration Tests")]
 public class MemberTests(TestFactory<Program> factory) : IClassFixture<TestFactory<Program>>
 {
     [Fact]
