@@ -8,8 +8,6 @@ using Respondo.Core.Occasions.Persistence;
 using Respondo.Core.Parties.Persistence;
 using Respondo.Persistence.Context;
 using Testcontainers.PostgreSql;
-using Wolverine.Configuration;
-using Wolverine.Runtime;
 
 namespace Respondo.Testing.Integration.Helpers;
 
@@ -54,10 +52,7 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             services.RemoveDbContext<OccasionDbContext>();
             services.AddDbContext<OccasionDbContext>(options =>
             {
-                options.UseNpgsql(GenerateConnectionString("occasions"), optionsBuilder =>
-                {
-                    optionsBuilder.UseNodaTime();
-                });
+                options.UseNpgsql(GenerateConnectionString("occasions"), optionsBuilder => { });
             });
             
             services.EnsureDbCreated<OccasionDbContext>();
@@ -65,10 +60,7 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             services.RemoveDbContext<PartiesDbContext>();
             services.AddDbContext<PartiesDbContext>(options =>
             {
-                options.UseNpgsql(GenerateConnectionString("parties"), optionsBuilder =>
-                {
-                    optionsBuilder.UseNodaTime();
-                });
+                options.UseNpgsql(GenerateConnectionString("parties"), optionsBuilder => { });
             });
             
             services.EnsureDbCreated<PartiesDbContext>();

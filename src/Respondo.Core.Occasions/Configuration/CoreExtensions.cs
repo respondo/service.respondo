@@ -26,7 +26,6 @@ public static class CoreExtensions
             options.UseNpgsql(identityDbConnectionString, optionsBuilder =>
             {
                 optionsBuilder.MigrationsAssembly(typeof(OccasionDbContext).Assembly.FullName);
-                optionsBuilder.UseNodaTime();
             });
         });
     }

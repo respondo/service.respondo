@@ -1,4 +1,4 @@
-using NodaTime;
+using Microsoft.Extensions.Internal;
 
 namespace Respondo.Core.Occasions.Entities;
 
@@ -6,8 +6,8 @@ public class Occasion
 {
     public Occasion()
     {
-        CreatedAt = SystemClock.Instance.GetCurrentInstant();
-        LastUpdatedAt = SystemClock.Instance.GetCurrentInstant();
+        CreatedAt = TimeProvider.System.GetUtcNow();
+        LastUpdatedAt = TimeProvider.System.GetUtcNow();
     }
     
     public required Guid Id { get; set; }
@@ -16,8 +16,8 @@ public class Occasion
 
     public required Profile Profile { get; set; }
 
-    public Instant CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
     
-    public Instant LastUpdatedAt { get; set; }
+    public DateTimeOffset LastUpdatedAt { get; set; }
     
 }

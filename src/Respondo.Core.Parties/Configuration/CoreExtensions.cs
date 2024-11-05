@@ -26,7 +26,6 @@ public static class CoreExtensions
             options.UseNpgsql(identityDbConnectionString, optionsBuilder =>
             {
                 optionsBuilder.MigrationsAssembly(typeof(PartiesDbContext).Assembly.FullName);
-                optionsBuilder.UseNodaTime();
             });
         });
     }
@@ -55,6 +54,8 @@ public static class CoreExtensions
         options.Discovery.IncludeType<DeletePartyMemberHandler>();
         options.Discovery.IncludeType<GetPartiesHandler>();
         options.Discovery.IncludeType<GetPartyHandler>();
+        options.Discovery.IncludeType<UpdatePartyHandler>();
+        options.Discovery.IncludeType<UpdatePartyMemberHandler>();
         
         // Cross-Module Consumers
         options.Discovery.IncludeType<ApplicationUserCreatedConsumer>();

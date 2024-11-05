@@ -58,6 +58,18 @@ public partial class OccasionController
         return Ok(result);
     }
 
+    [HttpPut("{occasionId:guid}/party/{partyId:guid}")]
+    public async Task<IActionResult> UpdateParty([FromRoute] Guid occasionId, [FromRoute] Guid partyId,
+        [FromBody] UpdatePartyModel model, CancellationToken cancellationToken)
+    {
+        var request = model.ToRequest(occasionId, partyId, User.GetProfileId());
+
+        await _bus.InvokeAsync(request, cancellationToken);
+        
+        return Accepted();
+    }
+
+
     [HttpDelete("{occasionId:guid}/party/{partyId:guid}")]
     public async Task<IActionResult> DeleteParty([FromRoute] Guid occasionId, [FromRoute] Guid partyId,
         CancellationToken cancellationToken)
