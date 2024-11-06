@@ -25,7 +25,7 @@ jobs:
         run: dotnet restore
       - name: Build
         working-directory: ./src
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore --configuration Release
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -64,4 +64,4 @@ jobs:
           path: ./src/bin
       - name: Test
         working-directory: ./src
-        run: dotnet test --no-build --verbosity normal --property:WarningLevel=0
+        run: dotnet test --configuration Release --no-build --verbosity normal --property:WarningLevel=0
