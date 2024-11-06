@@ -27,10 +27,10 @@ jobs:
         working-directory: ./src
         run: dotnet build --no-restore --configuration Release
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: ./src/**/bin/
+          path: '**/bin/Release/**/*.dll'
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -58,10 +58,10 @@ jobs:
         with:
           dotnet-version: '9.0.100-rc.1.24452.12'
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: ./src
+          path: rsc
       - name: Test
-        working-directory: ./src
+        working-directory: src
         run: dotnet test --configuration Release --no-build --verbosity normal --property:WarningLevel=0
