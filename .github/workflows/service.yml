@@ -31,6 +31,20 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ASPNETCORE_ENVIRONMENT: 'Testing'
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: testing
+          POSTGRES_PASSWORD: testing
+          POSTGRES_DB: testing
+        ports:
+          - 5433:5432
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,6 +52,12 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.100-rc.1.24452.12'
+      - name: Restore
+        working-directory: ./src
+        run: dotnet restore
+      - name: Build
+        working-directory: ./src
+        run: dotnet build --no-restore
       - name: Test
         working-directory: ./src
-        run: dotnet test --verbosity normal
+        run: dotnet test --no-build --verbosity normal --property:WarningLevel=0

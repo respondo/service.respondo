@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-rc.1" />
+        <PackageReference Include="WolverineFx" Version="3.0.0-rc-2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Respondo.Core.Identity.Contracts\Respondo.Core.Identity.Contracts.csproj" />
+      <ProjectReference Include="..\Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj" />
+      <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="Respondo.Testing.Unit" />
+        <InternalsVisibleTo Include="Respondo.Testing.Integration" />
+    </ItemGroup>
+</Project>

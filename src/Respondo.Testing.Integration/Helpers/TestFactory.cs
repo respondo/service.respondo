@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Respondo.Core.Occasions.Persistence;
+using Respondo.Core.Parties.Persistence;
 using Respondo.Persistence.Context;
 using Testcontainers.PostgreSql;
 
@@ -13,13 +14,6 @@ namespace Respondo.Testing.Integration.Helpers;
 public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime
     where TProgram : class
 {
-    private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
-        .WithDatabase("respondo")
-        .WithUsername("postgres")
-        .WithPassword("postgres")
-        .WithCleanUp(true)
-        .Build();
-
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
@@ -50,13 +44,18 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             services.RemoveDbContext<OccasionDbContext>();
             services.AddDbContext<OccasionDbContext>(options =>
             {
-                options.UseNpgsql(GenerateConnectionString("occasions"), optionsBuilder =>
-                {
-                    optionsBuilder.UseNodaTime();
-                });
+                options.UseNpgsql(GenerateConnectionString("occasions"), optionsBuilder => { });
             });
             
             services.EnsureDbCreated<OccasionDbContext>();
+            
+            services.RemoveDbContext<PartiesDbContext>();
+            services.AddDbContext<PartiesDbContext>(options =>
+            {
+                options.UseNpgsql(GenerateConnectionString("parties"), optionsBuilder => { });
+            });
+            
+            services.EnsureDbCreated<PartiesDbContext>();
         });
     }
 
@@ -72,16 +71,20 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
 
     public async Task InitializeAsync()
     {
-        await _container.StartAsync();
+        // await _container.StartAsync();
     }
 
     public new async Task DisposeAsync()
     {
-        await _container.DisposeAsync();
+        // foreach (var VARIABLE in Services.GetServices<DbContext>())
+        // {
+        //     
+        // }
     }
 
     private string GenerateConnectionString(string database)
     {
-        return _container.GetConnectionString().Replace("respondo", $"respondo.{database}");
+        return $"Server=127.0.0.1;Port=5433;Database=respondo.{database};User Id=testing;Password=testing;";
+        // return _container.GetConnectionString().Replace("respondo", $"respondo.{database}");
     }
 }

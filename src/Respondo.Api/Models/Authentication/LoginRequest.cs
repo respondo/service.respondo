@@ -1,21 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Respondo.Api.Models.Authentication;
 
 /// <summary>
-///     Model for login an existing user.
+///     Request for login an existing user.
 /// </summary>
-public class LoginModel
+public class LoginRequest
 {
     /// <summary>
     ///     Email of the user.
     /// </summary>
     [Required, EmailAddress]
+    [Description("Email of the user.")]
     public required string Email { get; init; }
     
     /// <summary>
     ///     Password of the user.
     /// </summary>
     [Required]
+    [Description("Password of the user.")]
     public required string Password { get; init; }
 }

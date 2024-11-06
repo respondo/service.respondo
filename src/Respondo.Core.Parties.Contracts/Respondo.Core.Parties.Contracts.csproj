@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="CreateParty.Events.cs">
+        <DependentUpon>CreateParty.cs</DependentUpon>
+      </Compile>
+      <Compile Update="CreateParty.Response.cs">
+        <DependentUpon>CreateParty.cs</DependentUpon>
+      </Compile>
+      <Compile Update="AddPartyMember.Events.cs">
+        <DependentUpon>AddPartyMember.cs</DependentUpon>
+      </Compile>
+      <Compile Update="GetParty.Response.cs">
+        <DependentUpon>GetParty.cs</DependentUpon>
+      </Compile>
+      <Compile Update="DeleteParty.Events.cs">
+        <DependentUpon>DeleteParty.cs</DependentUpon>
+      </Compile>
+      <Compile Update="DeletePartyMember.Events.cs">
+        <DependentUpon>DeletePartyMember.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

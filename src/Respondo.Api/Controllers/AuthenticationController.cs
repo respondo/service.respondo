@@ -46,11 +46,11 @@ public class AuthenticationController : ControllerBase
         
         await _signInManager.SignInAsync(user, true);
 
-        return Redirect("/");
+        return Redirect("http://localhost:3000");
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginModel model, CancellationToken cancellationToken)
+    public async Task<IActionResult> Login([FromBody] LoginRequest model, CancellationToken cancellationToken)
     {
         var user = await _userManager.FindByEmailAsync(model.Email);
 
@@ -70,7 +70,7 @@ public class AuthenticationController : ControllerBase
         
         await _signInManager.SignInAsync(user, true);
 
-        return Redirect("/");
+        return Ok();
     }
 
     [Authorize]

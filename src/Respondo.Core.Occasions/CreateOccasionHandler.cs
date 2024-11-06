@@ -22,6 +22,6 @@ public sealed record CreateOccasionHandler
 
         await context.SaveChangesAsync();
 
-        return (new CreateOccasionResponse { Id = occasion.Id }, new OccasionCreated { Id = occasion.Id });
+        return (new CreateOccasionResponse { Id = occasion.Id }, new OccasionCreated { Id = occasion.Id, ProfileId = profile.Id });
     }
 }

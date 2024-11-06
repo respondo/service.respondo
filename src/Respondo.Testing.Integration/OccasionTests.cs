@@ -8,6 +8,7 @@ using Respondo.Testing.Integration.Helpers;
 
 namespace Respondo.Testing.Integration;
 
+[Collection("Integration Tests")]
 public class OccasionTests(TestFactory<Program> factory) : IClassFixture<TestFactory<Program>>
 {
     [Fact]

@@ -1,27 +1,21 @@
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Testcontainers.PostgreSql;
 
 namespace Respondo.Testing.Unit.Helpers;
 
 public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
 {
-    private readonly PostgreSqlContainer _container = new PostgreSqlBuilder()
-        .WithCleanUp(true)
-        .Build();
-
-    public T DbContext { get; private set; } = null!;
+    private readonly SqliteConnection _connection = new SqliteConnection("Filename=:memory:");
+    internal T DbContext { get; private set; } = null!;
 
     public async Task InitializeAsync()
     {
-        await _container.StartAsync();
-        var connectionString = _container.GetConnectionString();
+        _connection.Open();
 
         var options = new DbContextOptionsBuilder<T>()
-            .UseNpgsql(connectionString, builder =>
-            {
-                builder.MigrationsAssembly(typeof(T).Assembly.GetName().Name);
-                builder.UseNodaTime();
-            })
+            .UseSqlite(_connection)
             .Options;
 
         
@@ -32,6 +26,6 @@ public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
     
     public async Task DisposeAsync()
     {
-        await _container.DisposeAsync();
+        await _connection.CloseAsync();
     }
 }

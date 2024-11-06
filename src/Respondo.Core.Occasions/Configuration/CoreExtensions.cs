@@ -26,7 +26,6 @@ public static class CoreExtensions
             options.UseNpgsql(identityDbConnectionString, optionsBuilder =>
             {
                 optionsBuilder.MigrationsAssembly(typeof(OccasionDbContext).Assembly.FullName);
-                optionsBuilder.UseNodaTime();
             });
         });
     }
@@ -51,6 +50,7 @@ public static class CoreExtensions
         // Module Handlers
         
         options.Discovery.IncludeType<CreateOccasionHandler>();
+        options.Discovery.IncludeType<GetOccasionsHandler>();
         options.Discovery.IncludeType<GetOccasionHandler>();
         
         // Cross-Module Consumers
