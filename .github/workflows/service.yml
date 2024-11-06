@@ -61,7 +61,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: src
       - name: Display structure of downloaded files
         run: ls -R
       - name: Test
