@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-output
-          path: ./src
+          path: ./src/**/bin/
   test:
     needs: build
     runs-on: ubuntu-latest
