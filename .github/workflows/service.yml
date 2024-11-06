@@ -25,12 +25,12 @@ jobs:
         run: dotnet restore
       - name: Build
         working-directory: ./src
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build -o service --no-restore --configuration Release
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-output
-          path: ./src/bin
+          path: ./service
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-output
-          path: ./src/bin
+          path: ./service
       - name: Test
-        working-directory: ./src
+        working-directory: ./src/service
         run: dotnet test --configuration Release --no-build --verbosity normal --property:WarningLevel=0
