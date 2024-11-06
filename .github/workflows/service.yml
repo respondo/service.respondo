@@ -61,7 +61,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: rsc
+          path: src
+      - name: Display structure of downloaded files
+        run: ls -R
       - name: Test
         working-directory: src
         run: dotnet test --configuration Release --no-build --verbosity normal --property:WarningLevel=0
