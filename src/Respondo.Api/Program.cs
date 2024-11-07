@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using Respondo.Core.Identity.Configuration;
 using Respondo.Core.Occasions.Configuration;
 using Respondo.Core.Parties.Configuration;
+using Respondo.Core.Surveys.Configuration;
 using Scalar.AspNetCore;
 using Wolverine;
 
@@ -32,15 +33,17 @@ public class Program
         builder.ConfigureIdentityModule();
         builder.ConfigureOccasionsModule();
         builder.ConfigurePartiesModule();
+        builder.ConfigureSurveysModule();
         
-        builder.UseWolverine(options =>
-        {
-            options.Discovery.DisableConventionalDiscovery();
-
-            options.IncludeIdentityCore(builder.Configuration);
-            options.IncludeOccasionsModule(builder.Configuration);
-            options.IncludePartiesModule(builder.Configuration);
-        });
+        // builder.UseWolverine(options =>
+        // {
+        //     options.Discovery.DisableConventionalDiscovery();
+        //
+        //     options.IncludeIdentityCore(builder.Configuration);
+        //     options.IncludeOccasionsModule(builder.Configuration);
+        //     options.IncludePartiesModule(builder.Configuration);
+        //     options.IncludeSurveysModule(builder.Configuration);
+        // });
         
         var app = builder.Build();
         
@@ -71,6 +74,7 @@ public class Program
             app.RunIdentityDbMigrations();
             app.RunOccasionsDbMigrations();
             app.RunPartiesDbMigrations();
+            app.RunSurveysDbMigrations();
         }
         
         app.Run();
