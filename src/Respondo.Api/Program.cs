@@ -35,15 +35,15 @@ public class Program
         builder.ConfigurePartiesModule();
         builder.ConfigureSurveysModule();
         
-        // builder.UseWolverine(options =>
-        // {
-        //     options.Discovery.DisableConventionalDiscovery();
-        //
-        //     options.IncludeIdentityCore(builder.Configuration);
-        //     options.IncludeOccasionsModule(builder.Configuration);
-        //     options.IncludePartiesModule(builder.Configuration);
-        //     options.IncludeSurveysModule(builder.Configuration);
-        // });
+        builder.UseWolverine(options =>
+        {
+            options.Discovery.DisableConventionalDiscovery();
+        
+            options.IncludeIdentityCore(builder.Configuration);
+            options.IncludeOccasionsModule(builder.Configuration);
+            options.IncludePartiesModule(builder.Configuration);
+            options.IncludeSurveysModule(builder.Configuration);
+        });
         
         var app = builder.Build();
         
