@@ -11,8 +11,8 @@ public class Survey
     public List<Question> Questions { get; init; } = [];
     
     // External entity reference
-    public required Guid ProfileId { get; set; }
+    public required Guid OccasionId { get; set; }
     
     // External entity reference
-    public required Guid OccasionId { get; set; }
+    public required Guid ProfileId { get; set; }
 }
