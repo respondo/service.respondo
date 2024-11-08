@@ -8,13 +8,13 @@ public abstract class Question
     }
 
     public Guid Id { get; init; } = Guid.CreateVersion7();
-    public required string Statement { get; set; }
-    public required bool Required { get; set; }
+    public required string Statement { get; init; }
+    public required bool Required { get; init; }
 
-    public DateTimeOffset CreatedAt { get; set; } = TimeProvider.System.GetUtcNow();
+    public DateTimeOffset CreatedAt { get; init; } = TimeProvider.System.GetUtcNow();
     
-    public List<Answer> Answers { get; set; }
-    public required Survey Survey { get; set; }
+    public List<Answer> Answers { get; init; }
+    public required Survey Survey { get; init; }
 }
 
 public class OpenQuestion : Question { }
@@ -23,10 +23,10 @@ public class GeneralQuestion : Question { }
 
 public class SingleChoiceQuestion : Question
 {
-    public List<string> Options { get; set; } = [];
+    public List<string> Options { get; init; } = [];
 }
 
 public class MultipleChoiceQuestion : Question
 {
-    public List<string> Options { get; set; } = [];
+    public List<string> Options { get; init; } = [];
 }

@@ -7,27 +7,27 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Update="SurveyUpdated.cs">
-        <DependentUpon>UpdateSurvey.cs</DependentUpon>
-      </Compile>
-      <Compile Update="SurveyAnswered.cs">
-        <DependentUpon>AnswerSurvey.cs</DependentUpon>
-      </Compile>
-      <Compile Update="QuestionAdded.cs">
-        <DependentUpon>AddQuestion.cs</DependentUpon>
-      </Compile>
-      <Compile Update="QuestionDeleted.cs">
-        <DependentUpon>DeleteQuestion.cs</DependentUpon>
-      </Compile>
-      <Compile Update="SurveyDeleted.cs">
-        <DependentUpon>DeleteSurvey.cs</DependentUpon>
-      </Compile>
-      <Compile Update="AnswerUpdated.cs">
-        <DependentUpon>UpdateAnswers.cs</DependentUpon>
-      </Compile>
-      <Compile Update="SurveyCreated.cs">
-        <DependentUpon>CreateSurvey.cs</DependentUpon>
-      </Compile>
+        <Compile Update="SurveyUpdated.cs">
+            <DependentUpon>UpdateSurvey.cs</DependentUpon>
+        </Compile>
+        <Compile Update="SurveyAnswered.cs">
+            <DependentUpon>AnswerSurvey.cs</DependentUpon>
+        </Compile>
+        <Compile Update="QuestionAdded.cs">
+            <DependentUpon>AddQuestion.cs</DependentUpon>
+        </Compile>
+        <Compile Update="QuestionDeleted.cs">
+            <DependentUpon>DeleteQuestion.cs</DependentUpon>
+        </Compile>
+        <Compile Update="SurveyDeleted.cs">
+            <DependentUpon>DeleteSurvey.cs</DependentUpon>
+        </Compile>
+        <Compile Update="AnswerUpdated.cs">
+            <DependentUpon>UpdateAnswers.cs</DependentUpon>
+        </Compile>
+        <Compile Update="SurveyCreated.cs">
+            <DependentUpon>CreateSurvey.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
