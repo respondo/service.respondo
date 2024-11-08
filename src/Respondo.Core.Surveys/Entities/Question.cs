@@ -23,10 +23,10 @@ public class GeneralQuestion : Question { }
 
 public class SingleChoiceQuestion : Question
 {
-    public List<string> Options { get; init; } = [];
+    public required List<string> Options { get; init; } = [];
 }
 
 public class MultipleChoiceQuestion : Question
 {
-    public List<string> Options { get; init; } = [];
+    public required List<string> Options { get; init; } = [];
 }
