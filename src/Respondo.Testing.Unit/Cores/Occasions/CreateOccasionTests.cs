@@ -8,7 +8,7 @@ using Respondo.Testing.Unit.Helpers;
 
 namespace Respondo.Testing.Unit.Cores.Occasions;
 
-public class CreateOccasionTests(DbContextFixture<OccasionDbContext> dbFixture) : IClassFixture<DbContextFixture<OccasionDbContext>>
+public class CreateOccasionTests(UnitFixture<OccasionDbContext> dbFixture) : IClassFixture<UnitFixture<OccasionDbContext>>
 {
     [Theory]
     [InlineData("b686c655-2892-4f35-94ba-a69c7b9dda41")]

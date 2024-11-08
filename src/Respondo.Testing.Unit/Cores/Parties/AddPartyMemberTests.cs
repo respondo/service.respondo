@@ -8,7 +8,7 @@ using Respondo.Testing.Unit.Helpers;
 
 namespace Respondo.Testing.Unit.Cores.Parties;
 
-public class AddPartyMemberTests(DbContextFixture<PartiesDbContext> dbFixture) : IClassFixture<DbContextFixture<PartiesDbContext>>
+public class AddPartyMemberTests(UnitFixture<PartiesDbContext> dbFixture) : IClassFixture<UnitFixture<PartiesDbContext>>
 {
     [Fact]
     public async Task Should_Add_Member_To_Party()

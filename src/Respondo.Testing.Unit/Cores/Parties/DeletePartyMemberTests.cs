@@ -8,7 +8,7 @@ using Respondo.Testing.Unit.Helpers;
 
 namespace Respondo.Testing.Unit.Cores.Parties;
 
-public class DeletePartyMemberTests(DbContextFixture<PartiesDbContext> dbFixture) : IClassFixture<DbContextFixture<PartiesDbContext>>
+public class DeletePartyMemberTests(UnitFixture<PartiesDbContext> dbFixture) : IClassFixture<UnitFixture<PartiesDbContext>>
 {
     [Fact]
     public async Task Should_Delete_Party_Member()

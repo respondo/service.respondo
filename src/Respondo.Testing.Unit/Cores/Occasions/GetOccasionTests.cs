@@ -7,7 +7,7 @@ using Respondo.Testing.Unit.Helpers;
 
 namespace Respondo.Testing.Unit.Cores.Occasions;
 
-public class GetOccasionTests(DbContextFixture<OccasionDbContext> dbFixture) : IClassFixture<DbContextFixture<OccasionDbContext>>
+public class GetOccasionTests(UnitFixture<OccasionDbContext> dbFixture) : IClassFixture<UnitFixture<OccasionDbContext>>
 {
     [Fact]
     public async Task Should_Get_Occasion()
