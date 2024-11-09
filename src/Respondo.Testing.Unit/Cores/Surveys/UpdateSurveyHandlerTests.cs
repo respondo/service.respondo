@@ -22,7 +22,7 @@ public class UpdateSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : I
 
         var survey = new Survey
         {
-            Title = "ShouldAddQuestionToSurvey",
+            Title = "ShouldUpdateSurvey",
             OccasionId = Guid.CreateVersion7(),
             ProfileId = Guid.CreateVersion7()
         };
@@ -53,7 +53,7 @@ public class UpdateSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : I
 
         var survey = new Survey
         {
-            Title = "ShouldAddQuestionToSurvey",
+            Title = "ShouldPublishEventWhenSurveyIsUpdated",
             OccasionId = Guid.CreateVersion7(),
             ProfileId = Guid.CreateVersion7()
         };
@@ -66,7 +66,7 @@ public class UpdateSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : I
         var request = new UpdateSurvey
         {
             Id = survey.Id,
-            Title = "ShouldUpdateSurvey",
+            Title = "ShouldPublishEventWhenSurveyIsUpdated",
             ProfileId = survey.ProfileId
         };
 

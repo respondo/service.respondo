@@ -22,7 +22,7 @@ public class DeleteSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : I
 
         var survey = new Survey
         {
-            Title = "ShouldAddQuestionToSurvey",
+            Title = "ShouldDeleteSurvey",
             OccasionId = Guid.CreateVersion7(),
             ProfileId = Guid.CreateVersion7()
         };
@@ -52,7 +52,7 @@ public class DeleteSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : I
 
         var survey = new Survey
         {
-            Title = "ShouldAddQuestionToSurvey",
+            Title = "ShouldPublishEventWhenSurveyIsDeleted",
             OccasionId = Guid.CreateVersion7(),
             ProfileId = Guid.CreateVersion7()
         };

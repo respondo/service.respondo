@@ -59,7 +59,7 @@ public class AddQuestionTests(UnitFixture<SurveysDbContext> fixture) : IClassFix
 
         var survey = new Survey
         {
-            Title = "ShouldAddQuestionToSurvey",
+            Title = "ShouldPublishEventWhenQuestionIsAdded",
             OccasionId = Guid.CreateVersion7(),
             ProfileId = Guid.CreateVersion7()
         };
@@ -73,7 +73,7 @@ public class AddQuestionTests(UnitFixture<SurveysDbContext> fixture) : IClassFix
         {
             SurveyId = survey.Id,
             Type = AddQuestion.EQuestionType.General,
-            Statement = "ShouldAddQuestionToSurvey",
+            Statement = "ShouldPublishEventWhenQuestionIsAdded",
             Required = true,
             ProfileId = survey.ProfileId
         };
@@ -97,7 +97,7 @@ public class AddQuestionTests(UnitFixture<SurveysDbContext> fixture) : IClassFix
         
         var survey = new Survey
         {
-            Title = "TestSurvey",
+            Title = "ShouldAddCorrectQuestionTypeToSurvey",
             OccasionId = Guid.CreateVersion7(),
             ProfileId = Guid.CreateVersion7()
         };
