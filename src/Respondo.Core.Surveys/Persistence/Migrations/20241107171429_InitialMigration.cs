@@ -59,7 +59,7 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     QuestionId = table.Column<Guid>(type: "uuid", nullable: false),
-                    PartyId = table.Column<Guid>(type: "uuid", nullable: false)
+                    MemberId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {

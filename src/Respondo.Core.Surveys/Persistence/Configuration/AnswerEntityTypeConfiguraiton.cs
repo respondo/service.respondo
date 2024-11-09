@@ -18,7 +18,7 @@ public class AnswerEntityTypeConfiguration : IEntityTypeConfiguration<Answer>
             .WithMany(e => e.Answers)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.Property(e => e.PartyId)
+        builder.Property(e => e.MemberId)
             .IsRequired();
     }
 }

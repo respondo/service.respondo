@@ -35,7 +35,7 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("PartyId")
+                    b.Property<Guid>("MemberId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("QuestionId")

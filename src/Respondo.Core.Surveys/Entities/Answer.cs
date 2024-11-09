@@ -10,5 +10,5 @@ public class Answer
     public required Question Question { get; init; }
     
     // External entity reference
-    public required Guid PartyId { get; init; }
+    public required Guid MemberId { get; init; }
 }
