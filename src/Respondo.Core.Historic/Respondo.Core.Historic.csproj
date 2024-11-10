@@ -25,6 +25,9 @@
       <Compile Update="Aggregates\OccasionProjection.cs">
         <DependentUpon>Occasion.cs</DependentUpon>
       </Compile>
+      <Compile Update="Aggregates\OccasionHistoryProjection.cs">
+        <DependentUpon>OccasionHistory.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
     
 </Project>

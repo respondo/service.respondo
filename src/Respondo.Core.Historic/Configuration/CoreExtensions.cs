@@ -23,6 +23,7 @@ public static class CoreExtensions
     public static void AddHistoricModuleProjections(this ProjectionOptions options)
     {
         options.Add<OccasionProjection>(ProjectionLifecycle.Async);
+        options.Add<OccasionHistoryProjection>(ProjectionLifecycle.Async);
     }
     
     /// <summary>
