@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using JasperFx.Core;
 using Marten;
+using Marten.Events.Daemon.Resiliency;
 using Respondo.Core.Historic.Configuration;
 using Respondo.Core.Identity.Configuration;
 using Respondo.Core.Occasions.Configuration;
@@ -43,11 +44,11 @@ public class Program
         {
             options.Connection(builder.Configuration.GetConnectionString("HistoricDb")!);
             options.UseSystemTextJsonForSerialization();
-            
+            options.Projections.AddHistoricModuleProjections();
             options.AutoCreateSchemaObjects = builder.Environment.IsProduction() 
                 ? AutoCreate.CreateOrUpdate 
                 : AutoCreate.All;
-        }).ApplyAllDatabaseChangesOnStartup().IntegrateWithWolverine();
+        }).ApplyAllDatabaseChangesOnStartup().AddAsyncDaemon(DaemonMode.HotCold).IntegrateWithWolverine();
         
         builder.UseWolverine(options =>
         {
@@ -71,7 +72,7 @@ public class Program
         
         app.UseCors(options =>
         {
-            options.WithOrigins("https://08fbaaf0.respondo-dashboard.pages.dev")
+            options.WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
