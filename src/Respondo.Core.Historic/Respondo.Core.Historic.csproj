@@ -5,4 +5,19 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Marten" Version="7.31.3" />
+        <PackageReference Include="WolverineFx" Version="3.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj" />
+      <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
+    </ItemGroup>
+    
 </Project>
