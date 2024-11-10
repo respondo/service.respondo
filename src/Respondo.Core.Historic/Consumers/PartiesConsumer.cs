@@ -14,4 +14,9 @@ public sealed record PartiesConsumer
     {
         await session.Events.AppendExclusive(@event.OccasionId, @event);
     }
+    
+    public async Task Consume(PartyDeleted @event, IDocumentSession session)
+    {
+        await session.Events.AppendExclusive(@event.OccasionId, @event);
+    }
 }

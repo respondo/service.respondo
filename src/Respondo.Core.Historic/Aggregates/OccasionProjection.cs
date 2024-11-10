@@ -60,5 +60,25 @@ public class OccasionProjection : SingleStreamProjection<Occasion>
         };
     }
 
+    public Occasion Apply(IEvent<PartyDeleted> @event, Occasion state)
+    {
+        var party = state.Parties
+            .Where(party => party.Id == @event.Data.PartyId)
+            .Select(((party, i) => new { Value = party, Index = i }))
+            .FirstOrDefault();
+
+        if (party is null || party.Index < 0)
+        {
+            return state;
+        }
+
+        state.Parties.RemoveAt(party.Index);
+
+        return state with
+        {
+            UpdatedAt = @event.Timestamp
+        };
+    }
+    
     #endregion
 }

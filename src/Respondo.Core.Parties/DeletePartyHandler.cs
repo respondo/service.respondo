@@ -20,6 +20,6 @@ public sealed record DeletePartyHandler
         context.Parties.Remove(party);
         await context.SaveChangesAsync();
 
-        return new PartyDeleted { Id = party.Id };
+        return new PartyDeleted { PartyId = party.Id };
     }
 }

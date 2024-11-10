@@ -44,4 +44,15 @@ public sealed class OccasionHistoryProjection : SingleStreamProjection<OccasionH
         
         return state;
     }
+    
+    public OccasionHistory Apply(IEvent<PartyDeleted> @event, OccasionHistory state)
+    {
+        state.History.Add(new OccasionHistory.Event
+        {
+            Log = $"{nameof(PartyDeleted)}: ({@event.Data.PartyId})",
+            Timestamp = @event.Timestamp,
+        });
+        
+        return state;
+    }
 }
