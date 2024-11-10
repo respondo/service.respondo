@@ -18,6 +18,8 @@
     </ItemGroup>
     
     <ItemGroup>
+        <ProjectReference Include="..\Respondo.Core.Historic.Contracts\Respondo.Core.Historic.Contracts.csproj" />
+        <ProjectReference Include="..\Respondo.Core.Historic\Respondo.Core.Historic.csproj" />
         <ProjectReference Include="..\Respondo.Core.Identity.Contracts\Respondo.Core.Identity.Contracts.csproj"/>
         <ProjectReference Include="..\Respondo.Core.Identity\Respondo.Core.Identity.csproj" />
         <ProjectReference Include="..\Respondo.Core.Occasions\Respondo.Core.Occasions.csproj" />
