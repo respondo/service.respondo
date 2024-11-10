@@ -26,10 +26,15 @@ public sealed record CreatePartyHandler
             Email = request.Email,
             Occasion = occasion
         };
-        
+
         await context.Parties.AddAsync(party);
         await context.SaveChangesAsync();
-        
-        return (new CreatePartyResponse { Id = party.Id }, new PartyCreated { PartyId = party.Id, OccasionId = occasion.Id });
+
+        return (new CreatePartyResponse { Id = party.Id }, new PartyCreated
+        {
+            PartyId = party.Id,
+            Name = party.Name,
+            OccasionId = occasion.Id
+        });
     }
 }
