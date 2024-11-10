@@ -20,5 +20,11 @@
       <ProjectReference Include="..\Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj" />
       <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Aggregates\OccasionProjection.cs">
+        <DependentUpon>Occasion.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
     
 </Project>
