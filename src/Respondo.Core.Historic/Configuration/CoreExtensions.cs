@@ -1,5 +1,7 @@
+using Marten.Events.Projections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Respondo.Core.Historic.Aggregates;
 using Respondo.Core.Historic.Consumers;
 using Wolverine;
 
@@ -17,6 +19,11 @@ public static class CoreExtensions
     public static void ConfigureHistoricModule(this WebApplicationBuilder builder)
     {
     }
+
+    public static void AddHistoricModuleProjections(this ProjectionOptions options)
+    {
+        options.Add<OccasionProjection>(ProjectionLifecycle.Async);
+    }
     
     /// <summary>
     ///     Include Wolverine handlers for Identity Core operations.
@@ -30,5 +37,6 @@ public static class CoreExtensions
         
         // Cross-Module Consumers
         options.Discovery.IncludeType<OccasionsConsumer>();
+        options.Discovery.IncludeType<PartiesConsumer>();
     }
 }
