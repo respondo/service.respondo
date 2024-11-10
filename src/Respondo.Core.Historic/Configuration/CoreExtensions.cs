@@ -24,8 +24,11 @@ public static class CoreExtensions
     /// <param name="options"><see cref="WolverineOptions"/>.</param>
     /// <param name="configuration"><see cref="IConfiguration"/>.</param>
     public static void IncludeHistoricModule(this WolverineOptions options, IConfiguration configuration)
-    {
+    {        
+        // Module Handlers
+        options.Discovery.IncludeType<GetOccasionHistoryHandler>();
+        
         // Cross-Module Consumers
-        options.Discovery.IncludeType<OccasionsConsumers>();
+        options.Discovery.IncludeType<OccasionsConsumer>();
     }
 }
