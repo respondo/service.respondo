@@ -13,7 +13,7 @@ public sealed record OccasionCreatedConsumer
         
         var occasion = new Occasion
         {
-            Id = @event.Id,
+            Id = @event.OccasionId,
             Profile = profile
         };
         
