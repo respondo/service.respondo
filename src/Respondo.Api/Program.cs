@@ -1,9 +1,15 @@
 using System.Text.Json.Serialization;
+using JasperFx.Core;
+using Marten;
+using Respondo.Core.Historic.Configuration;
 using Respondo.Core.Identity.Configuration;
 using Respondo.Core.Occasions.Configuration;
 using Respondo.Core.Parties.Configuration;
 using Scalar.AspNetCore;
+using Weasel.Core;
 using Wolverine;
+using Wolverine.ErrorHandling;
+using Wolverine.Marten;
 
 namespace Respondo.Api;
 
@@ -33,10 +39,29 @@ public class Program
         builder.ConfigureOccasionsModule();
         builder.ConfigurePartiesModule();
         
+        builder.Services.AddMarten(options =>
+        {
+            options.Connection(builder.Configuration.GetConnectionString("HistoricDb")!);
+            options.UseSystemTextJsonForSerialization();
+            
+            options.AutoCreateSchemaObjects = builder.Environment.IsProduction() 
+                ? AutoCreate.CreateOrUpdate 
+                : AutoCreate.All;
+        }).ApplyAllDatabaseChangesOnStartup().IntegrateWithWolverine();
+        
         builder.UseWolverine(options =>
         {
             options.Discovery.DisableConventionalDiscovery();
 
+            options.Policies.OnAnyException()
+                .RetryWithCooldown(100.Milliseconds(), 250.Milliseconds(), 500.Milliseconds());
+            
+            options.Policies.AutoApplyTransactions();
+            
+            options.Policies.UseDurableInboxOnAllListeners();
+            options.Policies.UseDurableOutboxOnAllSendingEndpoints();
+            
+            options.IncludeHistoricModule(builder.Configuration);
             options.IncludeIdentityCore(builder.Configuration);
             options.IncludeOccasionsModule(builder.Configuration);
             options.IncludePartiesModule(builder.Configuration);
