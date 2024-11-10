@@ -2,5 +2,6 @@ namespace Respondo.Core.Parties.Contracts;
 
 public sealed record PartyCreated
 {
-    public required Guid Id { get; init; }
+    public required Guid PartyId { get; init; }
+    public required Guid OccasionId { get; init; }
 }

@@ -45,7 +45,8 @@ public class CreatePartyTests(DbContextFixture<PartiesDbContext> dbFixture) : IC
         var (response, @event) = await new CreatePartyHandler().Handle(request, dbFixture.DbContext);
 
         response!.Id.Should().NotBeEmpty();
-        @event!.Id.Should().NotBeEmpty();
+        @event!.PartyId.Should().NotBeEmpty();
+        @event!.OccasionId.Should().Be(occasionId);
         
         var party = dbFixture.DbContext.Parties
             .Include(party => party.Occasion)

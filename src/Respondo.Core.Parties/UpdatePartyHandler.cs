@@ -36,7 +36,7 @@ public sealed record UpdatePartyHandler
         {
             await context.SaveChangesAsync();
             
-            return new PartyUpdated { Id = party.Id };
+            return new PartyUpdated { PartyId = party.Id, OccasionId = request.OccasionId };
         }
 
         return default;
