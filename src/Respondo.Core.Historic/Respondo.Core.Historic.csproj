@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-rc.1" />
-        <PackageReference Include="WolverineFx" Version="3.2.0" />
+        <PackageReference Include="Marten" Version="7.31.3" />
+        <PackageReference Include="WolverineFx" Version="3.2.0"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -16,13 +16,18 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Respondo.Core.Identity.Contracts\Respondo.Core.Identity.Contracts.csproj" />
+      <ProjectReference Include="..\Respondo.Core.Historic.Contracts\Respondo.Core.Historic.Contracts.csproj" />
       <ProjectReference Include="..\Respondo.Core.Occasions.Contracts\Respondo.Core.Occasions.Contracts.csproj" />
       <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
     </ItemGroup>
-    
+
     <ItemGroup>
-        <InternalsVisibleTo Include="Respondo.Testing.Unit" />
-        <InternalsVisibleTo Include="Respondo.Testing.Integration" />
+      <Compile Update="Aggregates\OccasionProjection.cs">
+        <DependentUpon>Occasion.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Aggregates\OccasionHistoryProjection.cs">
+        <DependentUpon>OccasionHistory.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
+    
 </Project>

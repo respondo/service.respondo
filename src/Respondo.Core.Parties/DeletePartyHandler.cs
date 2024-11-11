@@ -9,6 +9,7 @@ public sealed record DeletePartyHandler
     public async Task<PartyDeleted?> Handle(DeleteParty request, PartiesDbContext context)
     {
         var party = await context.Parties
+            .Include(party => party.Occasion)
             .Where(party => party.Occasion.Profile.Id == request.ProfileId)
             .FirstOrDefaultAsync(party => party.Id == request.Id);
 
@@ -20,6 +21,6 @@ public sealed record DeletePartyHandler
         context.Parties.Remove(party);
         await context.SaveChangesAsync();
 
-        return new PartyDeleted { Id = party.Id };
+        return new PartyDeleted { PartyId = party.Id, OccasionId = party.Occasion.Id};
     }
 }

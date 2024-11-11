@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Respondo.Core.Identity.Contracts.Entities;
 using Respondo.Core.Identity.Persistence;
 using Wolverine;
@@ -26,11 +27,7 @@ public static class CoreExtensions
 
         builder.Services.AddDbContext<IdentityDbContext>(options =>
         {
-            options.UseNpgsql(identityDbConnectionString, optionsBuilder =>
-            {
-                optionsBuilder
-                    .MigrationsAssembly("Respondo.Persistence.Migrations");
-            });
+            options.UseNpgsql(identityDbConnectionString, optionsBuilder => { });
         });
 
         builder.Services.AddDataProtection().PersistKeysToDbContext<IdentityDbContext>();
@@ -51,8 +48,13 @@ public static class CoreExtensions
             options.SlidingExpiration = true;
             options.ExpireTimeSpan = TimeSpan.FromDays(30);
             options.Cookie.SameSite = SameSiteMode.None;
-            options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
             options.Cookie.IsEssential = true;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+
+            if (builder.Environment.IsDevelopment() || builder.Environment.IsProduction())
+            {
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            }
         });
         builder.Services.AddAuthorization();
     }

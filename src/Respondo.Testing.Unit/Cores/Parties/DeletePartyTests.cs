@@ -52,7 +52,7 @@ public class DeletePartyTests(DbContextFixture<PartiesDbContext> dbFixture) : IC
         var @event = await new DeletePartyHandler().Handle(request, dbFixture.DbContext);
 
         @event.Should().NotBeNull();
-        @event?.Id.Should().Be(party.Id);
+        @event?.PartyId.Should().Be(party.Id);
     }
 
     [Fact]
@@ -115,7 +115,7 @@ public class DeletePartyTests(DbContextFixture<PartiesDbContext> dbFixture) : IC
         var @event = await new DeletePartyHandler().Handle(request, dbFixture.DbContext);
 
         @event.Should().NotBeNull();
-        @event?.Id.Should().Be(party.Id);
+        @event?.PartyId.Should().Be(party.Id);
 
         var members = dbFixture.DbContext.Members.Where(m => m.Party.Id == party.Id).ToList();
         

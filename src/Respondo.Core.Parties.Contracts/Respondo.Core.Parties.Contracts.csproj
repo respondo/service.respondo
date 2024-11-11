@@ -25,6 +25,15 @@
       <Compile Update="DeletePartyMember.Events.cs">
         <DependentUpon>DeletePartyMember.cs</DependentUpon>
       </Compile>
+      <Compile Update="GetParties.Response.cs">
+        <DependentUpon>GetParties.cs</DependentUpon>
+      </Compile>
+      <Compile Update="UpdateParty.Events.cs">
+        <DependentUpon>UpdateParty.cs</DependentUpon>
+      </Compile>
+      <Compile Update="UpdatePartyMember.Events.cs">
+        <DependentUpon>UpdatePartyMember.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

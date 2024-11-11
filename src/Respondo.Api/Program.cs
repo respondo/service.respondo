@@ -1,9 +1,16 @@
 using System.Text.Json.Serialization;
+using JasperFx.Core;
+using Marten;
+using Marten.Events.Daemon.Resiliency;
+using Respondo.Core.Historic.Configuration;
 using Respondo.Core.Identity.Configuration;
 using Respondo.Core.Occasions.Configuration;
 using Respondo.Core.Parties.Configuration;
 using Scalar.AspNetCore;
+using Weasel.Core;
 using Wolverine;
+using Wolverine.ErrorHandling;
+using Wolverine.Marten;
 
 namespace Respondo.Api;
 
@@ -33,10 +40,29 @@ public class Program
         builder.ConfigureOccasionsModule();
         builder.ConfigurePartiesModule();
         
+        builder.Services.AddMarten(options =>
+        {
+            options.Connection(builder.Configuration.GetConnectionString("HistoricDb")!);
+            options.UseSystemTextJsonForSerialization();
+            options.Projections.AddHistoricModuleProjections();
+            options.AutoCreateSchemaObjects = builder.Environment.IsProduction() 
+                ? AutoCreate.CreateOrUpdate 
+                : AutoCreate.All;
+        }).ApplyAllDatabaseChangesOnStartup().AddAsyncDaemon(DaemonMode.HotCold).IntegrateWithWolverine();
+        
         builder.UseWolverine(options =>
         {
             options.Discovery.DisableConventionalDiscovery();
 
+            options.Policies.OnAnyException()
+                .RetryWithCooldown(100.Milliseconds(), 250.Milliseconds(), 500.Milliseconds());
+            
+            options.Policies.AutoApplyTransactions();
+            
+            options.Policies.UseDurableInboxOnAllListeners();
+            options.Policies.UseDurableOutboxOnAllSendingEndpoints();
+            
+            options.IncludeHistoricModule(builder.Configuration);
             options.IncludeIdentityCore(builder.Configuration);
             options.IncludeOccasionsModule(builder.Configuration);
             options.IncludePartiesModule(builder.Configuration);
@@ -46,7 +72,7 @@ public class Program
         
         app.UseCors(options =>
         {
-            options.WithOrigins("https://08fbaaf0.respondo-dashboard.pages.dev")
+            options.WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();

@@ -8,5 +8,8 @@ public sealed record PartyDeleted
     /// <summary>
     ///     Id of the deleted party.
     /// </summary>
-    public required Guid Id { get; init; }
+    public required Guid PartyId { get; init; }
+    
+    public required Guid OccasionId { get; init; }
+    
 }
