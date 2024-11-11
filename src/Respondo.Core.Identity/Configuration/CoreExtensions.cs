@@ -27,11 +27,7 @@ public static class CoreExtensions
 
         builder.Services.AddDbContext<IdentityDbContext>(options =>
         {
-            options.UseNpgsql(identityDbConnectionString, optionsBuilder =>
-            {
-                optionsBuilder
-                    .MigrationsAssembly("Respondo.Persistence.Migrations");
-            });
+            options.UseNpgsql(identityDbConnectionString, optionsBuilder => { });
         });
 
         builder.Services.AddDataProtection().PersistKeysToDbContext<IdentityDbContext>();
