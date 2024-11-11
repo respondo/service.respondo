@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Identity.Persistence;
 using Respondo.Core.Occasions.Persistence;
 using Respondo.Core.Parties.Persistence;
-using Respondo.Persistence.Context;
 using Testcontainers.PostgreSql;
 
 namespace Respondo.Testing.Integration.Helpers;
