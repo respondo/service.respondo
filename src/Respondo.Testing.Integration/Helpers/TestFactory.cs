@@ -32,11 +32,7 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             services.RemoveDbContext<IdentityDbContext>();
             services.AddDbContext<IdentityDbContext>(options =>
             {
-                options.UseNpgsql(GenerateConnectionString("identity"), optionsBuilder =>
-                {
-                    optionsBuilder
-                        .MigrationsAssembly("Respondo.Persistence.Migrations");
-                });
+                options.UseNpgsql(GenerateConnectionString("identity"), optionsBuilder => { });
             });
             
             services.EnsureDbCreated<IdentityDbContext>();

@@ -19,7 +19,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Respondo.Core.Identity.Contracts\Respondo.Core.Identity.Contracts.csproj"/>
-        <ProjectReference Include="..\Respondo.Persistence\Respondo.Persistence.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
