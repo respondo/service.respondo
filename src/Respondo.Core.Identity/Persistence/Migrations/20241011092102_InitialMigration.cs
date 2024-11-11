@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Respondo.Persistence.Migrations.IdentityDb
+namespace Respondo.Core.Identity.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Respondo.Core.Parties.Contracts;
-using Respondo.Core.Parties.Entities;
 using Respondo.Core.Parties.Persistence;
-using Wolverine;
 
 namespace Respondo.Core.Parties;
 

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Respondo.Core.Identity.Contracts.Entities;
-using Respondo.Persistence.Context;
+using Respondo.Core.Identity.Persistence;
 using Wolverine;
 
 namespace Respondo.Core.Identity.Configuration;

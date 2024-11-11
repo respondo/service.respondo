@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Identity.Persistence;
 using Respondo.Core.Occasions.Persistence;
 using Respondo.Core.Parties.Persistence;
-using Respondo.Persistence.Context;
-using Testcontainers.PostgreSql;
 
 namespace Respondo.Testing.Integration.Helpers;
 
@@ -32,11 +31,7 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
             services.RemoveDbContext<IdentityDbContext>();
             services.AddDbContext<IdentityDbContext>(options =>
             {
-                options.UseNpgsql(GenerateConnectionString("identity"), optionsBuilder =>
-                {
-                    optionsBuilder
-                        .MigrationsAssembly("Respondo.Persistence.Migrations");
-                });
+                options.UseNpgsql(GenerateConnectionString("identity"), optionsBuilder => { });
             });
             
             services.EnsureDbCreated<IdentityDbContext>();
