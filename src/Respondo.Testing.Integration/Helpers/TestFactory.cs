@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Respondo.Core.Identity.Persistence;
 using Respondo.Core.Occasions.Persistence;
 using Respondo.Core.Parties.Persistence;
-using Testcontainers.PostgreSql;
 
 namespace Respondo.Testing.Integration.Helpers;
 
