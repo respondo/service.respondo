@@ -25,7 +25,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Respondo.Api\Respondo.Api.csproj" />
-        <ProjectReference Include="..\Respondo.Persistence\Respondo.Persistence.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -23,6 +23,11 @@
         <ProjectReference Include="..\Respondo.Core.Surveys.Contracts\Respondo.Core.Surveys.Contracts.csproj" />
         <ProjectReference Include="..\Respondo.Core.Surveys\Respondo.Core.Surveys.csproj" />
         <ProjectReference Include="..\Respondo.Persistence.Migrations\Respondo.Persistence.Migrations.csproj"/>
+
+        <ProjectReference Include="..\Respondo.Core.Identity\Respondo.Core.Identity.csproj" />
+        <ProjectReference Include="..\Respondo.Core.Occasions\Respondo.Core.Occasions.csproj" />
+        <ProjectReference Include="..\Respondo.Core.Parties\Respondo.Core.Parties.csproj" />
+
     </ItemGroup>
 
     <ItemGroup>

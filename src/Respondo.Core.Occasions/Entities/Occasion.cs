@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Internal;
-
 namespace Respondo.Core.Occasions.Entities;
 
 public class Occasion
