@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Respondo.Core.Identity.Contracts.Entities;
 
-namespace Respondo.Persistence.Context;
+namespace Respondo.Core.Identity.Persistence;
 
 public class IdentityDbContext(DbContextOptions<IdentityDbContext> options)
     : IdentityDbContext<ApplicationUser>(options), IDataProtectionKeyContext

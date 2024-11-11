@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Respondo.Persistence.Context;
+using Respondo.Core.Identity.Persistence;
 
 #nullable disable
 
-namespace Respondo.Persistence.Migrations.IdentityDb
+namespace Respondo.Core.Identity.Persistence.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
     partial class IdentityDbContextModelSnapshot : ModelSnapshot

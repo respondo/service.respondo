@@ -1,5 +1,4 @@
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
 using Respondo.Core.Parties;
 using Respondo.Core.Parties.Contracts;
 using Respondo.Core.Parties.Entities;
