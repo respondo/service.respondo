@@ -46,6 +46,8 @@ public class PartyTests(TestFactory<Program> factory) : IClassFixture<TestFactor
         var partyCreationResponseContent = await partyCreationResponse.Content.ReadFromJsonAsync<CreatePartyResponse>();
         var partyId = partyCreationResponseContent!.Id;
 
+        await Task.Delay(1000);
+        
         #endregion
 
         var response = await client.GetAsync($"/api/Occasion/{occasionId}/party/{partyId}");
@@ -80,6 +82,8 @@ public class PartyTests(TestFactory<Program> factory) : IClassFixture<TestFactor
         var occasionCreationResponseContent = await occasionCreationResponse.Content.ReadFromJsonAsync<CreateOccasionResponse>();
         var occasionId = occasionCreationResponseContent!.Id;
 
+        await Task.Delay(1000);
+        
         #endregion
 
         var response = await client.PostAsJsonAsync($"api/Occasion/{occasionId}/party", new CreatePartyModel
@@ -125,6 +129,8 @@ public class PartyTests(TestFactory<Program> factory) : IClassFixture<TestFactor
         var partyCreationResponseContent = await partyCreationResponse.Content.ReadFromJsonAsync<CreatePartyResponse>();
         var partyId = partyCreationResponseContent!.Id;
 
+        await Task.Delay(1000);
+        
         #endregion
 
         var response = await client.DeleteAsync($"api/Occasion/{occasionId}/party/{partyId}");
