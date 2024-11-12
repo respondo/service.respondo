@@ -20,7 +20,8 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                     Title = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    OccasionId = table.Column<Guid>(type: "uuid", nullable: false)
+                    OccasionId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProfileId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,7 +58,6 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Value = table.Column<string>(type: "character varying(4096)", maxLength: 4096, nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     QuestionId = table.Column<Guid>(type: "uuid", nullable: false),
                     MemberId = table.Column<Guid>(type: "uuid", nullable: false)
                 },

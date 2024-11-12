@@ -38,9 +38,6 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTimeOffset?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Value")
                         .HasMaxLength(4096)
                         .HasColumnType("character varying(4096)");
@@ -98,6 +95,9 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("OccasionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ProfileId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Title")

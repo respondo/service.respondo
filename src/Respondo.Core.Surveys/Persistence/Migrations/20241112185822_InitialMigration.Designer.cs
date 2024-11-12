@@ -13,7 +13,7 @@ using Respondo.Core.Surveys.Persistence;
 namespace Respondo.Core.Surveys.Persistence.Migrations
 {
     [DbContext(typeof(SurveysDbContext))]
-    [Migration("20241107171429_InitialMigration")]
+    [Migration("20241112185822_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -40,9 +40,6 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
 
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("uuid");
-
-                    b.Property<DateTimeOffset?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Value")
                         .HasMaxLength(4096)
@@ -101,6 +98,9 @@ namespace Respondo.Core.Surveys.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("OccasionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ProfileId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Title")
