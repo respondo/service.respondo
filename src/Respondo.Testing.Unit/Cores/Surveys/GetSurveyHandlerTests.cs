@@ -31,7 +31,7 @@ public class GetSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : ICla
         
         var request = new GetSurvey
         {
-            SurveyId = survey.Id
+            OccasionId = survey.OccasionId
         };
         
         var response = await _handler.Handle(request, CancellationToken.None);
@@ -68,7 +68,7 @@ public class GetSurveyHandlerTests(UnitFixture<SurveysDbContext> fixture) : ICla
         
         var request = new GetSurvey
         {
-            SurveyId = survey.Id
+            OccasionId = survey.Id
         };
         
         var response = await _handler.Handle(request, CancellationToken.None);

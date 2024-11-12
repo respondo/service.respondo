@@ -20,7 +20,7 @@ public sealed record GetSurveyHandler
         var query = _db.Surveys
             .AsNoTracking()
             .Include(survey => survey.Questions)
-            .Where(survey => survey.Id == request.SurveyId)
+            .Where(survey => survey.OccasionId == request.OccasionId)
             .Select(survey => new GetSurveyResponse
             {
                 Id = survey.Id,
