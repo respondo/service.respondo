@@ -28,6 +28,9 @@
         <Compile Update="SurveyCreated.cs">
             <DependentUpon>CreateSurvey.cs</DependentUpon>
         </Compile>
+        <Compile Update="GetSurvey.Response.cs">
+          <DependentUpon>GetSurvey.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
