@@ -64,17 +64,14 @@ public class TestFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLife
         return CreateClient(options);
     }
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // await _container.StartAsync();
+        return Task.CompletedTask;
     }
 
-    public new async Task DisposeAsync()
+    public new Task DisposeAsync()
     {
-        // foreach (var VARIABLE in Services.GetServices<DbContext>())
-        // {
-        //     
-        // }
+        return Task.CompletedTask;
     }
 
     private string GenerateConnectionString(string database)

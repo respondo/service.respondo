@@ -38,7 +38,7 @@ public class UpdateAnswersHandlerTests(UnitFixture<SurveysDbContext> fixture) : 
             Survey = survey
         };
 
-        var answer = new Answer
+        var previousAnswer = new Answer
         {
             Question = question,
             MemberId = Guid.CreateVersion7(),
@@ -47,7 +47,7 @@ public class UpdateAnswersHandlerTests(UnitFixture<SurveysDbContext> fixture) : 
 
         await fixture.DbContext.Surveys.AddAsync(survey);
         await fixture.DbContext.Questions.AddAsync(question);
-        await fixture.DbContext.Answers.AddAsync(answer);
+        await fixture.DbContext.Answers.AddAsync(previousAnswer);
         await fixture.DbContext.SaveChangesAsync();
 
         ValidationService
@@ -60,13 +60,13 @@ public class UpdateAnswersHandlerTests(UnitFixture<SurveysDbContext> fixture) : 
         {
             SurveyId = survey.Id,
             PartyId = Guid.CreateVersion7(),
-            AnswersByMember = [(answer.MemberId, new (Guid, string?)[] { (question.Id, "false") })]
+            AnswersByMember = [(previousAnswer.MemberId, new (Guid, string?)[] { (question.Id, "false") })]
         };
         
         await _handler.Handle(request, CancellationToken.None);
 
-        var updatedAnswers = await fixture.DbContext.Answers
-            .FirstAsync(e => e.Question.Id == question.Id);
+        var answer = await fixture.DbContext.Answers
+            .FirstAsync(answer => answer.Question.Id == question.Id && answer.MemberId == previousAnswer.MemberId);
 
         answer.Value.Should().Be("false");
         answer.MemberId.Should().Be(request.AnswersByMember[0].MemberId);

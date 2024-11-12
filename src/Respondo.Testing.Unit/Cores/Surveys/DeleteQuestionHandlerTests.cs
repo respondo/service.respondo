@@ -89,6 +89,6 @@ public class DeleteQuestionHandlerTests(UnitFixture<SurveysDbContext> fixture) :
 
         fixture.MessageContext.Published
             .ShouldHaveMessageOfType<QuestionDeleted>()
-            .Id.Should().NotBeEmpty();
+            .Id.Should().Be(question.Id);
     }
 }
