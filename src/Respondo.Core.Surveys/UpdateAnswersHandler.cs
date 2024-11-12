@@ -25,7 +25,7 @@ public sealed record UpdateAnswersHandler
         _logger = logger;
     }
 
-    public async Task Handle(AnswerSurvey request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateAnswers request, CancellationToken cancellationToken)
     {
         var survey = await _db.Surveys
             .Include(survey => survey.Questions)
