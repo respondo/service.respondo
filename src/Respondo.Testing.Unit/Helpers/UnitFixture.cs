@@ -1,7 +1,5 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Testcontainers.PostgreSql;
 using Wolverine;
 
 namespace Respondo.Testing.Unit.Helpers;

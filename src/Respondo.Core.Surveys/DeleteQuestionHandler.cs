@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Respondo.Core.Surveys.Contracts;
-using Respondo.Core.Surveys.Entities;
 using Respondo.Core.Surveys.Persistence;
 using Wolverine;
 
