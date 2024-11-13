@@ -17,22 +17,29 @@ namespace Respondo.Core.Occasions.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0-rc.1.24451.1")
+                .HasAnnotation("ProductVersion", "9.0.0-rc.2.24474.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Respondo.Core.Occasions.Contracts.Entities.Occasion", b =>
+            modelBuilder.Entity("Respondo.Core.Occasions.Entities.Occasion", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("BaseUrl")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTimeOffset>("LastUpdatedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Logo")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -48,7 +55,7 @@ namespace Respondo.Core.Occasions.Persistence.Migrations
                     b.ToTable("Occasions");
                 });
 
-            modelBuilder.Entity("Respondo.Core.Occasions.Contracts.Entities.Profile", b =>
+            modelBuilder.Entity("Respondo.Core.Occasions.Entities.Profile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,9 +66,9 @@ namespace Respondo.Core.Occasions.Persistence.Migrations
                     b.ToTable("Profiles");
                 });
 
-            modelBuilder.Entity("Respondo.Core.Occasions.Contracts.Entities.Occasion", b =>
+            modelBuilder.Entity("Respondo.Core.Occasions.Entities.Occasion", b =>
                 {
-                    b.HasOne("Respondo.Core.Occasions.Contracts.Entities.Profile", "Profile")
+                    b.HasOne("Respondo.Core.Occasions.Entities.Profile", "Profile")
                         .WithMany("Occasions")
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -70,7 +77,7 @@ namespace Respondo.Core.Occasions.Persistence.Migrations
                     b.Navigation("Profile");
                 });
 
-            modelBuilder.Entity("Respondo.Core.Occasions.Contracts.Entities.Profile", b =>
+            modelBuilder.Entity("Respondo.Core.Occasions.Entities.Profile", b =>
                 {
                     b.Navigation("Occasions");
                 });
