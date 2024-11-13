@@ -11,6 +11,10 @@ public class Occasion
     public required Guid Id { get; set; }
 
     public required string Name { get; set; }
+    
+    public string? BaseUrl { get; set; }
+    
+    public string? Logo { get; set; }
 
     public required Profile Profile { get; set; }
 

@@ -13,6 +13,11 @@ public class OccasionEntityTypeConfiguration : IEntityTypeConfiguration<Occasion
         builder.Property(e => e.Name)
             .IsRequired();
 
+        builder.Property(e => e.BaseUrl)
+            .HasMaxLength(100);
+
+        builder.Property(e => e.BaseUrl);
+
         builder.HasOne(e => e.Profile)
             .WithMany(e => e.Occasions);
 
