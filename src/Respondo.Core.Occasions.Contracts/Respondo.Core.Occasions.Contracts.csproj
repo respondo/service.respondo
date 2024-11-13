@@ -16,6 +16,9 @@
       <Compile Update="GetOccasion.Response.cs">
         <DependentUpon>GetOccasion.cs</DependentUpon>
       </Compile>
+      <Compile Update="GetOccasions.Response.cs">
+        <DependentUpon>GetOccasions.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
