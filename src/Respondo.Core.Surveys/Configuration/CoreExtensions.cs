@@ -46,5 +46,14 @@ public static class CoreExtensions
     /// <param name="configuration"><see cref="IConfiguration"/>.</param>
     public static void IncludeSurveysModule(this WolverineOptions options, IConfiguration configuration)
     {
+        // Module Handlers
+        options.Discovery.IncludeType<AddQuestionHandler>();
+        options.Discovery.IncludeType<AnswerSurveyHandler>();
+        options.Discovery.IncludeType<CreateSurveyHandler>();
+        options.Discovery.IncludeType<DeleteQuestionHandler>();
+        options.Discovery.IncludeType<DeleteSurveyHandler>();
+        options.Discovery.IncludeType<GetSurveyHandler>();
+        options.Discovery.IncludeType<UpdateAnswersHandler>();
+        options.Discovery.IncludeType<UpdateSurveyHandler>();
     }
 }
