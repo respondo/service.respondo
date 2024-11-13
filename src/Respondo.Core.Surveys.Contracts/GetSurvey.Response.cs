@@ -9,6 +9,7 @@ public sealed record GetSurveyResponse
     public record Question
     {
         public required Guid Id { get; init; }
+        public string Type { get; init; }
         public required string Statement { get; init; }
         public required bool Required { get; init; }
         public List<string>? Options { get; init; }

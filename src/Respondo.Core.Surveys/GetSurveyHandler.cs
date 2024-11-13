@@ -28,6 +28,7 @@ public sealed record GetSurveyHandler
                 Questions = survey.Questions.Select(question => new GetSurveyResponse.Question
                 {
                     Id = question.Id,
+                    Type = question.GetType().Name,
                     Statement = question.Statement,
                     Required = question.Required,
                     Options = question.RetrieveOptions()
