@@ -4,15 +4,12 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0-rc.2.24474.1">-->
-<!--        </PackageReference>-->
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0-rc.2.24474.3"/>
         <PackageReference Include="Scalar.AspNetCore" Version="1.2.9"/>
-        <PackageReference Include="WolverineFx" Version="3.1.1" />
+        <PackageReference Include="WolverineFx" Version="3.2.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -22,8 +19,6 @@
         <ProjectReference Include="..\Respondo.Core.Parties\Respondo.Core.Parties.csproj"/>
         <ProjectReference Include="..\Respondo.Core.Surveys.Contracts\Respondo.Core.Surveys.Contracts.csproj" />
         <ProjectReference Include="..\Respondo.Core.Surveys\Respondo.Core.Surveys.csproj" />
-        <ProjectReference Include="..\Respondo.Persistence.Migrations\Respondo.Persistence.Migrations.csproj"/>
-
         <ProjectReference Include="..\Respondo.Core.Identity\Respondo.Core.Identity.csproj" />
         <ProjectReference Include="..\Respondo.Core.Occasions\Respondo.Core.Occasions.csproj" />
         <ProjectReference Include="..\Respondo.Core.Parties\Respondo.Core.Parties.csproj" />
@@ -36,6 +31,9 @@
         </Compile>
         <Compile Update="Controllers\OccasionController.Members.cs">
             <DependentUpon>OccasionController.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Controllers\OccasionController.Surveys.cs">
+          <DependentUpon>OccasionController.cs</DependentUpon>
         </Compile>
     </ItemGroup>
 
