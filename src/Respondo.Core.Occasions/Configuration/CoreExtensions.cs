@@ -19,11 +19,11 @@ public static class CoreExtensions
     /// <param name="builder"><see cref="WebApplicationBuilder"/>.</param>
     public static void ConfigureOccasionsModule(this WebApplicationBuilder builder)
     {
-        var identityDbConnectionString = builder.Configuration.GetConnectionString("OccasionsDb");
+        var connectionString = builder.Configuration.GetConnectionString("OccasionsDb");
 
         builder.Services.AddDbContext<OccasionDbContext>(options =>
         {
-            options.UseNpgsql(identityDbConnectionString, optionsBuilder =>
+            options.UseNpgsql(connectionString, optionsBuilder =>
             {
                 optionsBuilder.MigrationsAssembly(typeof(OccasionDbContext).Assembly.FullName);
             });
@@ -52,6 +52,7 @@ public static class CoreExtensions
         options.Discovery.IncludeType<CreateOccasionHandler>();
         options.Discovery.IncludeType<GetOccasionsHandler>();
         options.Discovery.IncludeType<GetOccasionHandler>();
+        options.Discovery.IncludeType<UpdateOccasionHandler>();
         
         // Cross-Module Consumers
 
