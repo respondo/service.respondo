@@ -1,12 +1,16 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Wolverine;
 
 namespace Respondo.Testing.Unit.Helpers;
 
-public class DbContextFixture<T> : IAsyncLifetime where T : DbContext
+public class UnitFixture<T> : IAsyncLifetime where T : DbContext
 {
     private readonly SqliteConnection _connection = new SqliteConnection("Filename=:memory:");
-    internal T DbContext { get; private set; } = null!;
+    
+    public readonly TestMessageContext MessageContext = new();
+    public T DbContext { get; private set; } = null!;
+    
 
     public async Task InitializeAsync()
     {

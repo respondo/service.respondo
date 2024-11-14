@@ -8,19 +8,19 @@ public sealed record GetOccasionHandler
 {
     public async Task<GetOccasionResponse?> Handle(GetOccasion request, OccasionDbContext context)
     {
-        var occasion = await context.Occasions
+        var query = context.Occasions
+            .AsNoTracking()
             .Where(occasion => occasion.Profile.Id == request.ProfileId)
-            .FirstOrDefaultAsync(occasion => occasion.Id == request.Id);
+            .Where(occasion => occasion.Id == request.Id)
+            .Select(occasion => new GetOccasionResponse
+            {
+                Id = occasion.Id,
+                Name = occasion.Name,
+                BaseUrl = occasion.BaseUrl,
+                Logo = occasion.Logo
+            });
 
-        if (occasion is null)
-        {
-            return default;
-        }
+        return await query.FirstOrDefaultAsync();
 
-        return new GetOccasionResponse
-        {
-            Id = occasion.Id,
-            Name = occasion.Name
-        };
     }
 }

@@ -7,7 +7,7 @@ using Respondo.Testing.Unit.Helpers;
 
 namespace Respondo.Testing.Unit.Cores.Parties;
 
-public class GetPartyTests(DbContextFixture<PartiesDbContext> dbFixture) : IClassFixture<DbContextFixture<PartiesDbContext>>
+public class GetPartyTests(UnitFixture<PartiesDbContext> dbFixture) : IClassFixture<UnitFixture<PartiesDbContext>>
 {
     [Fact]
     public async Task Should_Get_Party()

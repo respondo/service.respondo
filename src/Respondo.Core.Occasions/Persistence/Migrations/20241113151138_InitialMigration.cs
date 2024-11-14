@@ -28,6 +28,8 @@ namespace Respondo.Core.Occasions.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
+                    BaseUrl = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Logo = table.Column<string>(type: "text", nullable: true),
                     ProfileId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     LastUpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)

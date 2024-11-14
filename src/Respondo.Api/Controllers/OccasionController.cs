@@ -65,4 +65,14 @@ public partial class OccasionController : ControllerBase
 
         return Problem("Unable to create occasion. Please contact support.");
     }
+
+    [HttpPut("{occasionId:guid}")]
+    public async Task<IActionResult> UpdateOccasion([FromBody] UpdateOccasionRequest model, [FromRoute] Guid occasionId)
+    {
+        var request = model.ToRequest(occasionId, User.GetProfileId());
+
+        await _bus.InvokeAsync(request);
+
+        return Ok();
+    }
 }
