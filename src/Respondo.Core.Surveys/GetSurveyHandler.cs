@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Respondo.Core.Surveys.Contracts;
-using Respondo.Core.Surveys.Entities;
+using Respondo.Core.Surveys.Extensions;
 using Respondo.Core.Surveys.Persistence;
 
 namespace Respondo.Core.Surveys;
@@ -38,18 +38,5 @@ public sealed record GetSurveyHandler
         var survey = await query.FirstOrDefaultAsync(cancellationToken);
 
         return survey;
-    }
-}
-
-public static class QuestionExtensions
-{
-    public static List<string>? RetrieveOptions(this Question question)
-    {
-        return question switch
-        {
-            SingleChoiceQuestion singleChoiceQuestion => singleChoiceQuestion.Options,
-            MultipleChoiceQuestion multipleChoiceQuestion => multipleChoiceQuestion.Options,
-            _ => default
-        };
     }
 }
