@@ -9,8 +9,10 @@ COPY Respondo.Core.Identity/*.csproj Respondo.Core.Identity/
 COPY Respondo.Core.Identity.Contracts/*.csproj Respondo.Core.Identity.Contracts/
 COPY Respondo.Core.Occasions/*.csproj Respondo.Core.Occasions/
 COPY Respondo.Core.Occasions.Contracts/*.csproj Respondo.Core.Occasions.Contracts/
-COPY Respondo.Persistence/*.csproj Respondo.Persistence/
-COPY Respondo.Persistence.Migrations/*.csproj Respondo.Persistence.Migrations/
+COPY Respondo.Core.Parties/*.csproj Respondo.Core.Parties/
+COPY Respondo.Core.Parties.Contracts/*.csproj Respondo.Core.Parties.Contracts/
+COPY Respondo.Core.Surveys/*.csproj Respondo.Core.Surveys/
+COPY Respondo.Core.Surveys.Contracts/*.csproj Respondo.Core.Surveys.Contracts/
 COPY Respondo.Testing.Integration/*.csproj Respondo.Testing.Integration/
 COPY Respondo.Testing.Unit/*.csproj Respondo.Testing.Unit/
 
