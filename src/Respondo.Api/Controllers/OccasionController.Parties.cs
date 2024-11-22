@@ -27,8 +27,7 @@ public partial class OccasionController
     {
         var request = new GetParty
         {
-            Id = partyId,
-            ProfileId = User.GetProfileId()
+            Id = partyId
         };
 
         var result = await _bus.InvokeAsync<GetPartyResponse?>(request, cancellationToken);

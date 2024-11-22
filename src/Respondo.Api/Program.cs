@@ -1,8 +1,13 @@
 using System.Text.Json.Serialization;
+using Respondo.Api.Configuration;
 using Respondo.Core.Identity.Configuration;
+using Respondo.Core.Identity.Persistence;
 using Respondo.Core.Occasions.Configuration;
+using Respondo.Core.Occasions.Persistence;
 using Respondo.Core.Parties.Configuration;
+using Respondo.Core.Parties.Persistence;
 using Respondo.Core.Surveys.Configuration;
+using Respondo.Core.Surveys.Persistence;
 using Scalar.AspNetCore;
 using Wolverine;
 
@@ -44,12 +49,18 @@ public class Program
             options.IncludePartiesModule(builder.Configuration);
             options.IncludeSurveysModule(builder.Configuration);
         });
+
+        builder.Services.AddHealthChecks()
+            .AddDbContextCheck<IdentityDbContext>()
+            .AddDbContextCheck<OccasionDbContext>()
+            .AddDbContextCheck<PartiesDbContext>()
+            .AddDbContextCheck<SurveysDbContext>();
         
         var app = builder.Build();
         
         app.UseCors(options =>
         {
-            options.WithOrigins("https://08fbaaf0.respondo-dashboard.pages.dev")
+            options.WithOrigins(builder.Configuration.GetAllowedOrigins())
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
@@ -62,6 +73,8 @@ public class Program
         
         app.MapControllers();
 
+        app.MapHealthChecks("/health");
+        
         if (app.Environment.IsDevelopment())
         {   
             app.MapOpenApi();

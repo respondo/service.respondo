@@ -45,8 +45,7 @@ public class GetPartyTests(UnitFixture<PartiesDbContext> dbFixture) : IClassFixt
 
         var request = new GetParty
         {
-            Id = party.Id,
-            ProfileId = profile.Id
+            Id = party.Id
         };
 
         var response = await new GetPartyHandler().Handle(request, dbFixture.DbContext);
@@ -110,8 +109,7 @@ public class GetPartyTests(UnitFixture<PartiesDbContext> dbFixture) : IClassFixt
 
         var request = new GetParty
         {
-            Id = party.Id,
-            ProfileId = profile.Id
+            Id = party.Id
         };
 
         var response = await new GetPartyHandler().Handle(request, dbFixture.DbContext);
@@ -151,8 +149,7 @@ public class GetPartyTests(UnitFixture<PartiesDbContext> dbFixture) : IClassFixt
 
         var request = new GetParty
         {
-            Id = Guid.NewGuid(),
-            ProfileId = profile.Id
+            Id = Guid.NewGuid()
         };
 
         var response = await new GetPartyHandler().Handle(request, dbFixture.DbContext);
