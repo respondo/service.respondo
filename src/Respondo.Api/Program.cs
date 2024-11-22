@@ -60,7 +60,7 @@ public class Program
         
         app.UseCors(options =>
         {
-            options.WithOrigins(builder.Configuration.GetAllowedHosts())
+            options.WithOrigins(builder.Configuration.GetAllowedOrigins())
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
