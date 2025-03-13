@@ -16,6 +16,7 @@ public sealed record GetPartyHandler
                 Id = party.Id,
                 Name = party.Name,
                 Email = party.Email,
+                OccasionId = party.Occasion.Id,
                 Members = party.Members.Select(member => new GetPartyResponse.Member
                 {
                     Id = member.Id,
