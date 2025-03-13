@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Respondo.Core.Parties.Contracts;
+using Respondo.Core.Surveys.Contracts;
 using Wolverine;
 
 namespace Respondo.Api.Controllers;
@@ -30,9 +31,18 @@ public class InviteController : ControllerBase
         return Ok(response);
     }
     
-    [HttpGet("{partyId:guid}survey")]
-    public Task<IActionResult> GetSurveyByParty([FromRoute] Guid partyId, CancellationToken cancellationToken)
+    [HttpGet("{partyId:guid}/survey")]
+    public async Task<IActionResult> GetSurveyByParty([FromRoute] Guid partyId, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var request = new GetSurveyByParty { PartyId = partyId };
+        
+        var response = await _bus.InvokeAsync<GetSurveyByPartyResponse?>(request, cancellationToken);
+
+        if (response is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(response);
     }
 }

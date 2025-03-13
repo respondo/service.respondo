@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Surveys.Contracts;
 using Respondo.Core.Surveys.Persistence;
 using Wolverine;
 
@@ -55,5 +56,6 @@ public static class CoreExtensions
         options.Discovery.IncludeType<GetSurveyHandler>();
         options.Discovery.IncludeType<UpdateAnswersHandler>();
         options.Discovery.IncludeType<UpdateSurveyHandler>();
+        options.Discovery.IncludeType<GetSurveyByPartyHandler>();
     }
 }
