@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
       <ProjectReference Include="..\Respondo.Core.Surveys.Contracts\Respondo.Core.Surveys.Contracts.csproj" />
     </ItemGroup>
 </Project>
