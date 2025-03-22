@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Respondo.Core.Surveys.Contracts;
 using Respondo.Core.Surveys.Persistence;
+using Respondo.Core.Surveys.Services;
 using Wolverine;
 
 namespace Respondo.Core.Surveys.Configuration;
@@ -28,6 +29,8 @@ public static class CoreExtensions
                 optionsBuilder.MigrationsAssembly(typeof(SurveysDbContext).Assembly.FullName);
             });
         });
+        
+        builder.Services.AddSingleton<IAnswerValidationService, AnswerValidationService>();
     }
 
     /// <summary>
