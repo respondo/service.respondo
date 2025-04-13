@@ -47,6 +47,21 @@ public class InviteController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet("{partyId:guid}/answers")]
+    public async Task<IActionResult> GetAnswersByParty([FromRoute] Guid partyId, CancellationToken cancellationToken)
+    {
+        var request = new GetAnswersByParty { PartyId = partyId };
+
+        var response = await _bus.InvokeAsync<GetAnswersByPartyResponse?>(request, cancellationToken);
+
+        if (response is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(response);
+    }
+
     [HttpPost("{partyId:guid}/survey/answer")]
     public async Task<IActionResult> AnswerSurvey([FromRoute] Guid partyId, [FromBody] AnswerSurveyRequest request)
     {
@@ -56,5 +71,4 @@ public class InviteController : ControllerBase
 
         return Accepted();
     }
-
 }
