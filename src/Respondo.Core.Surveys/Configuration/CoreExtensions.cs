@@ -61,5 +61,6 @@ public static class CoreExtensions
         options.Discovery.IncludeType<UpdateSurveyHandler>();
         options.Discovery.IncludeType<GetSurveyByPartyHandler>();
         options.Discovery.IncludeType<GetAnswersByPartyHandler>();
+        options.Discovery.IncludeType<GetMembersWhoAnsweredHandler>();
     }
 }
