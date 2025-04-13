@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Respondo.Core.Surveys.Contracts;
 using Respondo.Core.Surveys.Persistence;
+using Respondo.Core.Surveys.Services;
 using Wolverine;
 
 namespace Respondo.Core.Surveys.Configuration;
@@ -27,6 +29,8 @@ public static class CoreExtensions
                 optionsBuilder.MigrationsAssembly(typeof(SurveysDbContext).Assembly.FullName);
             });
         });
+        
+        builder.Services.AddSingleton<IAnswerValidationService, AnswerValidationService>();
     }
 
     /// <summary>
@@ -55,5 +59,8 @@ public static class CoreExtensions
         options.Discovery.IncludeType<GetSurveyHandler>();
         options.Discovery.IncludeType<UpdateAnswersHandler>();
         options.Discovery.IncludeType<UpdateSurveyHandler>();
+        options.Discovery.IncludeType<GetSurveyByPartyHandler>();
+        options.Discovery.IncludeType<GetAnswersByPartyHandler>();
+        options.Discovery.IncludeType<GetMembersWhoAnsweredHandler>();
     }
 }

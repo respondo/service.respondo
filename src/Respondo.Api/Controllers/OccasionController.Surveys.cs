@@ -33,6 +33,22 @@ public partial class OccasionController
         return Ok(response);
     }
 
+    [HttpGet("{occasionId:guid}/survey/{surveyId:guid}/answers")]
+    public async Task<IActionResult> GetSurveyAnswers([FromRoute] Guid occasionId, [FromRoute] Guid surveyId,
+        CancellationToken cancellationToken = default)
+    {
+        var request = new GetMembersWhoAnswered { SurveyId = surveyId };
+
+        var response = await _bus.InvokeAsync<GetMembersWhoAnsweredResponse?>(request, cancellationToken);
+
+        if (response is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(response);
+    }
+
     [HttpPost("{occasionId:guid}/survey/{surveyId:guid}/question")]
     public async Task<IActionResult> AddQuestionToSurvey([FromRoute] Guid occasionId, [FromRoute] Guid surveyId,
         [FromBody] AddQuestionRequest model)

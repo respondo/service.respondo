@@ -31,6 +31,15 @@
         <Compile Update="GetSurvey.Response.cs">
           <DependentUpon>GetSurvey.cs</DependentUpon>
         </Compile>
+        <Compile Update="GetAnswersByParty.Response.cs">
+          <DependentUpon>GetAnswersByParty.cs</DependentUpon>
+        </Compile>
+        <Compile Update="GetSurveyByParty.Response.cs">
+          <DependentUpon>GetSurveyByParty.cs</DependentUpon>
+        </Compile>
+        <Compile Update="GetMembersWhoAnsweredResponse.cs">
+          <DependentUpon>GetMembersWhoAnswered.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>

@@ -10,13 +10,13 @@ public sealed record GetPartyHandler
     {
         
         var party = context.Parties
-            .Where(party => party.Occasion.Profile.Id == request.ProfileId)
             .Where(party => party.Id == request.Id)
             .Select(party => new GetPartyResponse
             {
                 Id = party.Id,
                 Name = party.Name,
                 Email = party.Email,
+                OccasionId = party.Occasion.Id,
                 Members = party.Members.Select(member => new GetPartyResponse.Member
                 {
                     Id = member.Id,

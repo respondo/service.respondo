@@ -7,8 +7,8 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-rc.2" />
-        <PackageReference Include="WolverineFx" Version="3.2.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.1" />
+        <PackageReference Include="WolverineFx" Version="3.3.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Respondo.Core.Parties.Contracts\Respondo.Core.Parties.Contracts.csproj" />
       <ProjectReference Include="..\Respondo.Core.Surveys.Contracts\Respondo.Core.Surveys.Contracts.csproj" />
     </ItemGroup>
 </Project>
